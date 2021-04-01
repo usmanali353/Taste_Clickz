@@ -23,6 +23,7 @@ class feedback{
     this.id,
     this.businessName
   });
+
   static feedback FeedbackFromJson(String str) => feedback.fromJson(json.decode(str));
   static List<feedback> FeedbackListFromJson(String str) => List<feedback>.from(json.decode(str).map((x) => feedback.fromJson(x)));
   static String FeedbackToJson(feedback data) => json.encode(data.toJson());
