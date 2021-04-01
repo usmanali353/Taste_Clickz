@@ -40,5 +40,13 @@ class Questions{
     "questionOptions":List<dynamic>.from(questionOptions.map((x) => x.toJson())),
     "questionType":questionType
   };
-
+  Map<String, dynamic> addOffline() => {
+    "id":id,
+    "businessId": businessId,
+    "categoryId":categoryId,
+    "subCategoryId":subCategoryId,
+    "questionText":questionText,
+    "questionOptions":List<dynamic>.from(questionOptions.map((x) => x.addOffline())),
+    "questionType":questionType
+  };
 }

@@ -75,15 +75,13 @@ class _OfflineFeedbackDetailState extends State<OfflineFeedbackDetail> {
                         return "Yes";
                       }else
                         return "No";
-                    }else if(widget.customerFeedbacks[index]['questions']['questionType']==3&&widget.customerFeedbacks[index]['questions']['questionOptions'].length>0){
+                    }else if(widget.customerFeedbacks[index]['questions']['questionType']==3&&widget.customerFeedbacks[index]['selectedQuestionOption'].length>0){
                       List<String> selectedOptions=[];
-                      if(widget.customerFeedbacks[index]['selectedQuestionOption']!=null&&widget.customerFeedbacks[index]['selectedQuestionOption'].length>0) {
                        if( widget.customerFeedbacks[index]['questions']['questionOptions'].length>0)
                         for (int i = 0; i < widget.customerFeedbacks[index]['questions']['questionOptions'].length; i++) {
                          if(widget.customerFeedbacks[index]['selectedQuestionOption'][0]['questionOptionsId'] == widget.customerFeedbacks[index]['questions']['questionOptions'][i]['questionOptionId'])
                            return  widget.customerFeedbacks[index]['questions']['questionOptions'][i]['questionOptionText'];
                           // selectedOptions.add(widget.customerFeedbacks[index]['questions'][i]['questionOptions']['questionOptionText']);
-                        }
                       }
                       return "No Options Selected";//selectedOptions.toString().replaceAll("[","").replaceAll("]", "");
                     }else
