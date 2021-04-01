@@ -39,6 +39,7 @@ final _accountController=Get.find<AccountController>();
       country=TextEditingController();
     }
     //Assigning values for Already Logged in User
+    print(_accountController.getLoggedInUserData()!=null);
       if(_accountController.getLoggedInUserData()!=null){
       if(_accountController.getLoggedInUserData().userInfo.name!=null&&_accountController.getLoggedInUserData().userInfo.name.isNotEmpty){
         name.text=_accountController.getLoggedInUserData().userInfo.name;
@@ -89,17 +90,19 @@ final _accountController=Get.find<AccountController>();
       email: email.text,
       customerName: name.text,
       comment: comment.text,
-      image: image,
+    //  image: image,
       customerFeedBacks: customerFeedback
-    ), context).then((value){
-      city.text="";
-      country.text="";
-      name.text="";
-      phone.text="";
-      email.text="";
-      image="";
-      comment.text="";
-      customerFeedback.clear();
+    ), context).then((response){
+      if(response.statusCode==200||response.statusCode==201) {
+        // city.text = "";
+        // country.text = "";
+        // name.text = "";
+        // phone.text = "";
+        // email.text = "";
+        image = "";
+        comment.text = "";
+        customerFeedback.clear();
+      }
      // Navigator.pop(context);
     });
   }

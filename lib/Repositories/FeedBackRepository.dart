@@ -21,10 +21,11 @@ class FeedBackRepository extends IFeedBackRepository{
         backgroundColor: Color(0x33000000),
         animationDuration: Duration(milliseconds: 500));
     try{
-      locator<Logger>().i(f);
+      locator<Logger>().i("nmbvbnv"+f.toString());
+      locator<Logger>().i(f.customerFeedBacks.toString());
+      print(feedback.FeedbackAddToJson(f));
       progressDialog.show();
-      print(feedback.FeedbackToJson(f).toString()+"grftuiuyuu");
-      var res=await http.post(Utils.baseUrl()+"Feedback",body:feedback.FeedbackToJson(f),headers: {"Content-Type":"application/json","Authorization":"Bearer ${locator<GetStorage>().read("token")}"});
+      var res=await http.post(Utils.baseUrl()+"Feedback",body:feedback.FeedbackAddToJson(f),headers: {"Content-Type":"application/json","Authorization":"Bearer ${locator<GetStorage>().read("token")}"});
       progressDialog.dismiss();
       locator<Logger>().i(res.statusCode);
       if(res.statusCode==200||res.statusCode==201)
