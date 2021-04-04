@@ -49,7 +49,7 @@ class _CommentAndPictureState extends State<CommentAndPicture> {
               color: color1,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: widget.image!=null ?MemoryImage(base64Decode(widget.image)):AssetImage("assets/business.jpg")
+                image: widget.image!=null ?NetworkImage(widget.image):AssetImage("assets/business.jpg")
               )
             ),
             ),

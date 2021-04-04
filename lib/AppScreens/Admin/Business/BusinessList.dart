@@ -119,8 +119,8 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
-                                                        image:  MemoryImage(
-                                                            base64Decode(businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:'')
+                                                        image:  NetworkImage(
+                                                            businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:''
                                                         ),
                                     ),
                                     //color: color3,

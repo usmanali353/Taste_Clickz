@@ -114,7 +114,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: MemoryImage(base64Decode(businessController.businesses[index].image))
+                                  image: NetworkImage(businessController.businesses[index].image)
                               ),
                             ),
                             child: Stack(
