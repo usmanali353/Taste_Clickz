@@ -37,4 +37,10 @@ class QuestionOptions{
    "questionOptionText":questionOptionText,
    "rating":rating
  };
+ Map<String, dynamic> addOffline() => {
+   "questionId":questionId,
+   "questionOptionId":questionOptionId,
+   "questionOptionText":questionOptionText,
+   "rating":rating
+ };
 }

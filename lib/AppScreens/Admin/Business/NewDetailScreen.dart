@@ -34,7 +34,7 @@ class BusinessProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.only(bottomRight: Radius.circular(10), bottomLeft: Radius.circular(10)),
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: MemoryImage(base64Decode(business.image)),
+                            image: NetworkImage(business.image),
                         )
                     ),
                     child: Padding(
