@@ -140,7 +140,7 @@ class AccountRepository extends IAccountRepository{
     // show dialog
     try{
       progressDialog.show();
-      var res=await http.post(Utils.baseUrl()+"Account/EditProfile ",body:RegisterViewModel.registerViewModelToJson(registerViewModel),headers: {"Content-type":"application/json"});
+      var res=await http.post(Utils.baseUrl()+"Account/EditProfile",body:RegisterViewModel.registerViewModelToJson(registerViewModel),headers: {"Content-type":"application/json"});
       progressDialog.dismiss();
       locator<Logger>().i(RegisterViewModel.registerViewModelToJson(registerViewModel));
       if(res.statusCode==200)
