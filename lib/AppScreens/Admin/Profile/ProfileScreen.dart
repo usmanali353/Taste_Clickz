@@ -97,10 +97,10 @@ class ProfileScreen extends StatelessWidget {
                                 //   ),
                                 // ),
 
-                                SizedBox(width: 80,),
+                                SizedBox(width:25,),
 
                                 Container(
-                                  width: 250,
+                                  width: 350,
                                   height: 100,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
@@ -119,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                                         style: GoogleFonts.prompt(
                                           textStyle: TextStyle(
                                               color: color3,
-                                              fontSize: 35,
+                                              fontSize: 30,
                                               fontWeight: FontWeight.bold
                                           ),
                                         ),

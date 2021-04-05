@@ -20,7 +20,7 @@ class _AddBusinessCategoryState extends State<AddQuestionOptions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Business Category",
+        title: Text("Add Question Options",
           style: GoogleFonts.prompt(
             textStyle: TextStyle(
                 color: color4,
@@ -84,6 +84,7 @@ class _AddBusinessCategoryState extends State<AddQuestionOptions> {
                 elevation: 6,
                 child: Container(
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     controller: optionController.value,
                     style: GoogleFonts.prompt(
                       textStyle: TextStyle(

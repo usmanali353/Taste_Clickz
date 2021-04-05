@@ -128,7 +128,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                                         borderRadius: BorderRadius.circular(30)
                                     ),
                                     width: 65,
-                                    height: 50,
+                                    height: 30,
 
                                     child: Padding(
                                       padding: const EdgeInsets.all(4.0),

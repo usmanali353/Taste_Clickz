@@ -94,7 +94,7 @@ class _AddAQuestionState extends State<AddAQuestion> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: color4,
-                      border: Border.all(color: color3, width: 1)
+                      //border: Border.all(color: color3, width: 1)
                     ),
                     child: DropdownButtonFormField(
                       items: _questionController.reviewTypeList!=null?_questionController.reviewTypeList.map((trainer)=>DropdownMenuItem(

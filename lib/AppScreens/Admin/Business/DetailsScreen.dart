@@ -12,6 +12,8 @@ import 'package:review_app/Models/BusinessViewModel.dart';
 import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
+import '../../../Models/feedback.dart';
+
 class DetailPage extends StatefulWidget {
   BusinessViewModel business;
 
@@ -96,128 +98,134 @@ class _DetailPageState extends State<DetailPage> {
                    return ListView.builder(itemCount:feedbackController.feedbacks.length, itemBuilder: (context, index){
                      return Padding(
                        padding: const EdgeInsets.all(8.0),
-                       child: Container(
-                         width: MediaQuery.of(context).size.width,
-                         //height: 100,
-                         decoration: BoxDecoration(
-                           //color: color1,
-                             borderRadius: BorderRadius.circular(10),
-                             border: Border.all(color: color3, width: 2)
-                         ),
-                         child: Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Padding(
-                               padding: const EdgeInsets.all(8.0),
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                   children: [
-                                     Text(feedbackController.feedbacks[index].customerName,
-                                       style: GoogleFonts.prompt(
-                                         textStyle: TextStyle(
-                                             color: color4,
-                                             fontSize: 17,
-                                             fontWeight: FontWeight.bold
-                                         ),
-                                       ),
-                                     ),
-                                     Row(
-                                       children: [
-                                         FaIcon(
-                                           FontAwesomeIcons.solidStar,
-                                           color: Colors.amber,
-                                           size: 20,
-                                         ),
-                                         SizedBox(width: 2,),
-                                         Text(feedbackController.feedbacks[index].overallRating.toStringAsFixed(1),
-                                           style: GoogleFonts.prompt(
-                                             textStyle: TextStyle(
-                                                 color: color4,
-                                                 fontSize: 15,
-                                                 fontWeight: FontWeight.bold
-                                             ),
+                       child: InkWell(
+                         onTap: (){
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> FeedbackDetails(feedbackController.feedbacks[index].customerFeedBacks,feedbackController.feedbacks[index])));
+
+                         },
+                         child: Container(
+                           width: MediaQuery.of(context).size.width,
+                           //height: 100,
+                           decoration: BoxDecoration(
+                             //color: color1,
+                               borderRadius: BorderRadius.circular(10),
+                               border: Border.all(color: color3, width: 2)
+                           ),
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Padding(
+                                 padding: const EdgeInsets.all(8.0),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                     children: [
+                                       Text(feedbackController.feedbacks[index].customerName,
+                                         style: GoogleFonts.prompt(
+                                           textStyle: TextStyle(
+                                               color: color4,
+                                               fontSize: 17,
+                                               fontWeight: FontWeight.bold
                                            ),
                                          ),
-                                       ],
-                                     )
-                                   ]
+                                       ),
+                                       Row(
+                                         children: [
+                                           FaIcon(
+                                             FontAwesomeIcons.solidStar,
+                                             color: Colors.amber,
+                                             size: 20,
+                                           ),
+                                           SizedBox(width: 2,),
+                                           Text(feedbackController.feedbacks[index].overallRating.toStringAsFixed(1),
+                                             style: GoogleFonts.prompt(
+                                               textStyle: TextStyle(
+                                                   color: color4,
+                                                   fontSize: 15,
+                                                   fontWeight: FontWeight.bold
+                                               ),
+                                             ),
+                                           ),
+                                         ],
+                                       )
+                                     ]
+                                 ),
                                ),
-                             ),
-                         Padding(
-                           padding: const EdgeInsets.all(8.0),
-                           child: Container(
-                             width: MediaQuery.of(context).size.width,
+                           Padding(
+                             padding: const EdgeInsets.all(8.0),
+                             child: Container(
+                               width: MediaQuery.of(context).size.width,
 
-                             child: Text(
-                               //"If extended to other regions where shark attacks are relatively common, the potential for avoiding injury and death is far higher, they reported in the journal Royal Society Open Science.",
-                               feedbackController.feedbacks[index].comment,
-                               maxLines: 3,
-                                       style: GoogleFonts.prompt(
-                                         textStyle: TextStyle(
-                                             color: color3,
-                                             fontSize: 12,
-                                             fontWeight: FontWeight.bold
+                               child: Text(
+                                 //"If extended to other regions where shark attacks are relatively common, the potential for avoiding injury and death is far higher, they reported in the journal Royal Society Open Science.",
+                                 feedbackController.feedbacks[index].comment,
+                                 maxLines: 3,
+                                         style: GoogleFonts.prompt(
+                                           textStyle: TextStyle(
+                                               color: color3,
+                                               fontSize: 12,
+                                               fontWeight: FontWeight.bold
+                                           ),
                                          ),
                                        ),
-                                     ),
+                             ),
                            ),
+                             ],
+                           )
+                           // ListTile(
+                           //   onTap: (){
+                           //     Navigator.push(context,MaterialPageRoute(builder:(context)=>FeedbackDetails(feedbackController.feedbacks[index].customerFeedBacks,feedbackController.feedbacks[index])));
+                           //   },
+                           //   title: Text(feedbackController.feedbacks[index].customerName,
+                           //     style: GoogleFonts.prompt(
+                           //       textStyle: TextStyle(
+                           //           color: color4,
+                           //           fontSize: 17,
+                           //           fontWeight: FontWeight.bold
+                           //       ),
+                           //     ),
+                           //   ),
+                           //   subtitle: Row(
+                           //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           //     children: [
+                           //       Text(feedbackController.feedbacks[index].comment,
+                           //         maxLines: 3,
+                           //         style: GoogleFonts.prompt(
+                           //           textStyle: TextStyle(
+                           //               color: color3,
+                           //               fontSize: 15,
+                           //               fontWeight: FontWeight.bold
+                           //           ),
+                           //         ),
+                           //       ),
+                           //       Row(
+                           //         children: [
+                           //           FaIcon(
+                           //             FontAwesomeIcons.solidStar,
+                           //             color: Colors.amber,
+                           //             size: 20,
+                           //           ),
+                           //           SizedBox(width: 2,),
+                           //           Text(feedbackController.feedbacks[index].overallRating.toStringAsFixed(1),
+                           //             style: GoogleFonts.prompt(
+                           //               textStyle: TextStyle(
+                           //                   color: color4,
+                           //                   fontSize: 15,
+                           //                   fontWeight: FontWeight.bold
+                           //               ),
+                           //             ),
+                           //           ),
+                           //         ],
+                           //       )
+                           //     ],
+                           //   ),
+                           //
+                           //   leading: FaIcon(
+                           //     FontAwesomeIcons.comments,
+                           //     color: color3,
+                           //     size: 35,
+                           //   ),
+                           // ),
                          ),
-                           ],
-                         )
-                         // ListTile(
-                         //   onTap: (){
-                         //     Navigator.push(context,MaterialPageRoute(builder:(context)=>FeedbackDetails(feedbackController.feedbacks[index].customerFeedBacks,feedbackController.feedbacks[index])));
-                         //   },
-                         //   title: Text(feedbackController.feedbacks[index].customerName,
-                         //     style: GoogleFonts.prompt(
-                         //       textStyle: TextStyle(
-                         //           color: color4,
-                         //           fontSize: 17,
-                         //           fontWeight: FontWeight.bold
-                         //       ),
-                         //     ),
-                         //   ),
-                         //   subtitle: Row(
-                         //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         //     children: [
-                         //       Text(feedbackController.feedbacks[index].comment,
-                         //         maxLines: 3,
-                         //         style: GoogleFonts.prompt(
-                         //           textStyle: TextStyle(
-                         //               color: color3,
-                         //               fontSize: 15,
-                         //               fontWeight: FontWeight.bold
-                         //           ),
-                         //         ),
-                         //       ),
-                         //       Row(
-                         //         children: [
-                         //           FaIcon(
-                         //             FontAwesomeIcons.solidStar,
-                         //             color: Colors.amber,
-                         //             size: 20,
-                         //           ),
-                         //           SizedBox(width: 2,),
-                         //           Text(feedbackController.feedbacks[index].overallRating.toStringAsFixed(1),
-                         //             style: GoogleFonts.prompt(
-                         //               textStyle: TextStyle(
-                         //                   color: color4,
-                         //                   fontSize: 15,
-                         //                   fontWeight: FontWeight.bold
-                         //               ),
-                         //             ),
-                         //           ),
-                         //         ],
-                         //       )
-                         //     ],
-                         //   ),
-                         //
-                         //   leading: FaIcon(
-                         //     FontAwesomeIcons.comments,
-                         //     color: color3,
-                         //     size: 35,
-                         //   ),
-                         // ),
                        ),
                      );
                    });

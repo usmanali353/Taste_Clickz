@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1034637057563",
+    "project_id": "tasteclicks",
+    "storage_bucket": "tasteclicks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034637057563:android:58cbc3415d68b7b12fa2be",
+        "android_client_info": {
+          "package_name": "iibtech.review_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034637057563-ns1d7eqcvpkudm8l9n1hcokh3kag2i7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXrK_21Sv_qwvnaVWP8aGPnL-JlEiw3p0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034637057563-ns1d7eqcvpkudm8l9n1hcokh3kag2i7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

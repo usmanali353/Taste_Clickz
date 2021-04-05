@@ -41,7 +41,7 @@ class _AddRatingsState extends State<AddRatings> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Review",
+        title: Text("Add Rating",
           style: GoogleFonts.prompt(
             textStyle: TextStyle(
                 color: color4,
