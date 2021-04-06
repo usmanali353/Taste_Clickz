@@ -54,10 +54,11 @@ class ProfileScreen extends StatelessWidget {
                                   IconButton(
                                     icon:  FaIcon(FontAwesomeIcons.signOutAlt, color: color3, size: 25,),
                                     onPressed: (){
-                                      locator<GetStorage>().remove("token");
                                       FirebaseMessaging().unsubscribeFromTopic(_accountController.getLoggedInUserData().userInfo.id).then((value){
+                                        locator<GetStorage>().remove("token");
                                         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NewSplashScreen()), (route) => false);
                                       });
+
                                     },
                                   ),
                                 ],
