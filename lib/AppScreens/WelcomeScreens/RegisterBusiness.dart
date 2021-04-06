@@ -23,17 +23,17 @@ class RegisterBusiness extends StatelessWidget{
                 child: ClipPath(
                   clipper: WaveClipperTwo(flip: true),
                   child: Container(
-                    height: 165,
+                    height: 135,
                     color: color5,
                     child: Stack(
                       children: [
                         ClipPath(
                           clipper: WaveClipperTwo(flip: true),
                           child: Container(
-                            height: 150,
+                            height: 120,
                             color: color3,
                             child:Padding(
-                              padding: const EdgeInsets.only(top: 60),
+                              padding: const EdgeInsets.only(top: 30),
                               child: Row(
                                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,

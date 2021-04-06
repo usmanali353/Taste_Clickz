@@ -62,185 +62,386 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
           });
         },
         child: Container(
-          color: color4,
+          color: Colors.white,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child:Obx((){
+          child:
+          Obx((){
             return ListView.builder(itemCount:_feedbackcontroller.feedbacks.length, itemBuilder: (context, index){
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  onTap: (){
-                    if(_feedbackcontroller.feedbacks[index].customerFeedBacks.length>0){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>FeedbackDetails(_feedbackcontroller.feedbacks[index].customerFeedBacks,_feedbackcontroller.feedbacks[index])));
-                    }else{
-                      Utils.showError(context,"No Details Available");
-                    }
-                  },
-                  child: Card(
-                    elevation: 6,
-                    color: color4,
-                    child: Container(
+                child: Card(
+                  elevation: 4,
+                  color: Colors.white,
+                  child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 175,
+                      height: 225,
                       decoration: BoxDecoration(
-                        //color: color1,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          //border: Border.all(color: color3, width: 2)
+                          //border: Border.all(color: color3, width: 1)
                       ),
-                      child: ListTile(
-                        title: Text(_feedbackcontroller.feedbacks[index].customerName,
-                          style: GoogleFonts.prompt(
-                            textStyle: TextStyle(
-                                color: color1,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Row(
+                              children: [
+                                Card(
+                                  elevation:4,
+                                  color: color3,
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: color3,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Center(child: FaIcon(FontAwesomeIcons.userTie, color: color4,)),
+                                  ),
+                                ),
+                                SizedBox(width: 3,),
+                                Card(
+                                  elevation:4,
+                                  color: Colors.white,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width - 80 ,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Center(
+                                      child: Text(_feedbackcontroller.feedbacks[index].customerName,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                            color: color1,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        ),
-                        subtitle: Column(
-                          children: [
-                            Row(
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Row(
                               children: [
-                                Text("Restaurant: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
+                                Card(
+                                  elevation:4,
+                                  color: color3,
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: color3,
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
+                                    child: Center(child: FaIcon(FontAwesomeIcons.storeAlt, color: color4, size: 20,)),
                                   ),
                                 ),
-                                Text(_feedbackcontroller.feedbacks[index].customerName,
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
+                                SizedBox(width: 3,),
+                                Card(
+                                  elevation:4,
+                                  color: Colors.white,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width - 80,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: Row(
+                                        children: [
+                                          Text("Restaurant: ",
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                  color: color3,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold
+                                              ),
+                                            ),
+                                          ),
+                                          Text(_feedbackcontroller.feedbacks[index].businessName!=null?_feedbackcontroller.feedbacks[index].businessName.toString():"-".toString(),
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                color: color1,
+                                                fontSize: 15,
+                                                //fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Row(
+                              children: [
+                                Card(
+                                  elevation:4,
+                                  color: color3,
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: color3,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Center(child: FaIcon(FontAwesomeIcons.at, color: color4,)),
+                                  ),
+                                ),
+                                SizedBox(width: 3,),
+                                Card(
+                                  elevation:4,
+                                  color: Colors.white,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width - 80,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: Row(
+                                        children: [
+                                          Text("Email: ",
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                  color: color3,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold
+                                              ),
+                                            ),
+                                          ),
+                                          Text(_feedbackcontroller.feedbacks[index].email,
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                color: color1,
+                                                fontSize: 15,
+                                                //fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Row(
+                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Row(
+                                  children: [
+                                    Card(
+                                      elevation:4,
+                                      color: color3,
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: color3,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Center(child: FaIcon(FontAwesomeIcons.solidGrinStars, color: color4,)),
+                                      ),
+                                    ),
+                                    SizedBox(width: 3,),
+                                    Card(
+                                      elevation:4,
+                                      color: Colors.white,
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width - 290,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child:  Padding(
+                                          padding: const EdgeInsets.only(left: 5),
+                                          child: Row(
+                                            children: [
+                                              Text("Ratings: ",
+                                                style: GoogleFonts.prompt(
+                                                  textStyle: TextStyle(
+                                                      color: color3,
+                                                      fontSize: 15,
+                                                      fontWeight: FontWeight.bold
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(_feedbackcontroller.feedbacks[index].overallRating.toStringAsFixed(1),
+                                                style: GoogleFonts.prompt(
+                                                  textStyle: TextStyle(
+                                                    color: color1,
+                                                    fontSize: 15,
+                                                    //fontWeight: FontWeight.w600
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 5,),
+                                Row(
+                                  children: [
+                                    Card(
+                                      elevation: 4,
+                                      color: color3,
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: color3,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Center(child: FaIcon(FontAwesomeIcons.mobileAlt, color: color4,)),
+                                      ),
+                                    ),
+                                    SizedBox(width: 3,),
+                                    Card(
+                                      elevation: 4,
+                                      color: Colors.white,
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width - 255,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child:  Center(
+                                          child:  Text(_feedbackcontroller.feedbacks[index].phone,
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                color: color1,
+                                                fontSize: 15,
+                                                //fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                            Row(
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Row(
+                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text("Overall Rating: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
+                                Row(
+                                  children: [
+                                    Card(
+                                      elevation: 4,
+                                      color: color3,
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: color3,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Center(child: FaIcon(FontAwesomeIcons.city, color: color4, size: 20,)),
+                                      ),
                                     ),
-                                  ),
+                                    SizedBox(width: 3,),
+                                    Card(
+                                      elevation: 4,
+                                      color: Colors.white,
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width - 290,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child:  Center(
+                                          child:  Text(_feedbackcontroller.feedbacks[index].city!=null?_feedbackcontroller.feedbacks[index].city:"-",
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                color: color1,
+                                                fontSize: 15,
+                                                //fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(_feedbackcontroller.feedbacks[index].overallRating.toStringAsFixed(1),
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
+                                SizedBox(width: 5,),
+                                Row(
+                                  children: [
+                                    Card(
+                                      elevation: 4,
+                                      color: color3,
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: color3,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Center(child: FaIcon(FontAwesomeIcons.globeAmericas, color: color4,)),
+                                      ),
                                     ),
-                                  ),
+                                    SizedBox(width: 3,),
+                                    Card(
+                                      elevation: 4,
+                                      color: Colors.white,
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width - 255,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child:  Center(
+                                          child:  Text(_feedbackcontroller.feedbacks[index].country!=null?_feedbackcontroller.feedbacks[index].country:"-",
+                                            style: GoogleFonts.prompt(
+                                              textStyle: TextStyle(
+                                                color: color1,
+                                                fontSize: 15,
+                                                //fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                            Row(
-                              children: [
-                                Text("City: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ),
-                                Text(_feedbackcontroller.feedbacks[index].city!=null?_feedbackcontroller.feedbacks[index].city:"-",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("Country: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ),
-                                Text(_feedbackcontroller.feedbacks[index].country!=null?_feedbackcontroller.feedbacks[index].country:"-",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("Email: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ),
-                                Text(_feedbackcontroller.feedbacks[index].email,
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("Phone: ",
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color3,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ),
-                                Text(_feedbackcontroller.feedbacks[index].phone,
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color1,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        leading: FaIcon(
-                          FontAwesomeIcons.comments,
-                          color: color3,
-                          size: 35,
-                        ),
-                      ),
-                    ),
+                          ),
+                        ],
+                      )
                   ),
                 ),
               );

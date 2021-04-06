@@ -106,7 +106,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height: 20,),
                       Center(
                         child: InkWell(
                           onTap: (){

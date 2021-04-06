@@ -32,14 +32,14 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                 child: ClipPath(
                   clipper: WaveClipperTwo(flip: true),
                   child: Container(
-                    height: 165,
+                    height: 125,
                     color: color5,
                     child: Stack(
                       children: [
                         ClipPath(
                           clipper: WaveClipperTwo(flip: true),
                           child: Container(
-                            height: 150,
+                            height: 110,
                             color: color3,
                             //child: Center(child: Text("WaveClipperTwo(flip: true)")),
                           ),
@@ -162,31 +162,31 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 50,),
-              RotationTransition(
-                turns: new AlwaysStoppedAnimation(180 / 360),
-                child: Container(
-                  child: ClipPath(
-                    clipper: WaveClipperTwo(flip: true),
-                    child: Container(
-                      height: 115,
-                      color: color5,
-                      child: Stack(
-                        children: [
-                          ClipPath(
-                            clipper: WaveClipperTwo(flip: true),
-                            child: Container(
-                              height: 100,
-                              color: color3,
-                              //child: Center(child: Text("WaveClipperTwo(flip: true)")),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(height: 50,),
+              // RotationTransition(
+              //   turns: new AlwaysStoppedAnimation(180 / 360),
+              //   child: Container(
+              //     child: ClipPath(
+              //       clipper: WaveClipperTwo(flip: true),
+              //       child: Container(
+              //         height: 115,
+              //         color: color5,
+              //         child: Stack(
+              //           children: [
+              //             ClipPath(
+              //               clipper: WaveClipperTwo(flip: true),
+              //               child: Container(
+              //                 height: 100,
+              //                 color: color3,
+              //                 //child: Center(child: Text("WaveClipperTwo(flip: true)")),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
