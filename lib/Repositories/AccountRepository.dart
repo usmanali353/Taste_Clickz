@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:ars_progress_dialog/ars_progress_dialog.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,6 +12,7 @@ import 'package:review_app/Models/Dropdown.dart';
 import 'package:review_app/Models/LoginViewModel.dart';
 import 'package:review_app/Models/RegisterViewModel.dart';
 import 'package:http/http.dart'as http;
+import 'package:review_app/Models/TokenPayLoad.dart';
 import 'package:review_app/Utils/Locator.dart';
 import 'package:review_app/Utils/Utils.dart';
 
@@ -36,8 +38,11 @@ class AccountRepository extends IAccountRepository{
         var claims =Utils.parseJwt(jsonDecode(res.body)["token"]);
         if(claims['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']=="Customer")
          Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>ClientBottomNavBar()),(Route<dynamic> route) => false);
-        else
-        Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>BottomNavBar()),(Route<dynamic> route) => false);
+        else {
+          FirebaseMessaging().subscribeToTopic(TokenPayLoad.fromJson(Utils.parseJwt(jsonDecode(res.body)["token"])).userInfo.id).then((value){
+             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BottomNavBar()), (Route<dynamic> route) => false);
+          });
+        }
         return res;
       }else if(res.body!=null&&res.body.isNotEmpty){
         progressDialog.dismiss();

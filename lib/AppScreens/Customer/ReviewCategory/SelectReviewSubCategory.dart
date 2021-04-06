@@ -10,8 +10,8 @@ import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class SelectReviewSubCategoryList extends StatefulWidget {
-  int categoryId,businessId;
-  SelectReviewSubCategoryList(this.businessId,this.categoryId);
+  var categoryId,businessId,businessOwnerId,businessName;
+  SelectReviewSubCategoryList(this.businessId,this.categoryId,this.businessOwnerId,this.businessName);
   @override
   _SelectReviewSubCategoryListState createState() => _SelectReviewSubCategoryListState();
 }
@@ -83,7 +83,7 @@ class _SelectReviewSubCategoryListState extends ResumableState<SelectReviewSubCa
                     ),
                     child: ListTile(
                       onTap: (){
-                        Navigator.push(context,MaterialPageRoute(builder:(context)=>CustomerInfoForFeedback(businessId:widget.businessId,subcategoryId:subCategoriesController.subcategoryList[index].id,categoryId: widget.categoryId,)));
+                        Navigator.push(context,MaterialPageRoute(builder:(context)=>CustomerInfoForFeedback(businessId:widget.businessId,subcategoryId:subCategoriesController.subcategoryList[index].id,categoryId: widget.categoryId,businessOwnerId: widget.businessOwnerId,businessName: widget.businessName,)));
                       },
                       title: Text(subCategoriesController.subcategoryList!=null&&subCategoriesController.subcategoryList[index].name!=null?subCategoriesController.subcategoryList[index].name:"-",
                         style: GoogleFonts.prompt(

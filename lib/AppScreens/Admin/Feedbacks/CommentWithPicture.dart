@@ -1,19 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/Controllers/FeedbackController.dart';
-import 'package:review_app/Models/feedback.dart';
 import 'package:review_app/components/colorConstants.dart';
 import 'package:review_app/Utils/Utils.dart';
 
 class CommentWithPicture extends StatefulWidget {
-  int businessId,categoryId,subcategoryId;
+  var businessId,categoryId,subcategoryId,businessOwnerId,businessName;
 
-  CommentWithPicture({this.businessId, this.categoryId, this.subcategoryId});
+  CommentWithPicture({this.businessId, this.categoryId, this.subcategoryId,this.businessOwnerId,this.businessName});
 
   @override
   _CommentWithPictureState createState() => _CommentWithPictureState();
@@ -178,7 +176,7 @@ class _CommentWithPictureState extends State<CommentWithPicture> {
                 padding: const EdgeInsets.all(5.0),
                 child: InkWell(
                   onTap: (){
-                    _feedbackController.addFeedback(context, widget.businessId, widget.categoryId, widget.subcategoryId);
+                    _feedbackController.addFeedback(context, widget.businessId, widget.categoryId, widget.subcategoryId,widget.businessOwnerId,widget.businessName);
                   },
                   child: Center(
                     child: Card(

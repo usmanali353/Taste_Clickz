@@ -40,26 +40,10 @@ final _accountController=Get.find<AccountController>();
     }
     //Assigning values for Already Logged in User
     print(_accountController.getLoggedInUserData()!=null);
-      if(_accountController.getLoggedInUserData()!=null){
-      if(_accountController.getLoggedInUserData().userInfo.name!=null&&_accountController.getLoggedInUserData().userInfo.name.isNotEmpty){
-        name.text=_accountController.getLoggedInUserData().userInfo.name;
-      }
-      if(_accountController.getLoggedInUserData().userInfo.email!=null&&_accountController.getLoggedInUserData().userInfo.email.isNotEmpty){
-        email.text=_accountController.getLoggedInUserData().userInfo.email;
-      }
-      if(_accountController.getLoggedInUserData().userInfo.phone!=null&&_accountController.getLoggedInUserData().userInfo.phone.isNotEmpty){
-        phone.text=_accountController.getLoggedInUserData().userInfo.phone;
-      }
-      if(_accountController.getLoggedInUserData().userInfo.city!=null&&_accountController.getLoggedInUserData().userInfo.city.isNotEmpty){
-        city.text=_accountController.getLoggedInUserData().userInfo.city;
-      }
-      if(_accountController.getLoggedInUserData().userInfo.country!=null&&_accountController.getLoggedInUserData().userInfo.country.isNotEmpty){
-        country.text=_accountController.getLoggedInUserData().userInfo.country;
-      }
-      }
+
     customerFeedback.clear();
   }
- void addFeedback(BuildContext context,int businessId,int categoryId,int subCategoryId){
+ void addFeedback(BuildContext context,int businessId,int categoryId,int subCategoryId,String businessOwnerId,String businessName){
     var overallRating=0.0;
     final ids = customerFeedback.map((e) => e.questionId).toSet();
     customerFeedback.retainWhere((x) => ids.remove(x.questionId));
@@ -90,15 +74,17 @@ final _accountController=Get.find<AccountController>();
       email: email.text,
       customerName: name.text,
       comment: comment.text,
-    //  image: image,
+      image: image,
+      city: city.text,
+      country: country.text,
       customerFeedBacks: customerFeedback
-    ), context).then((response){
+    ),businessOwnerId,businessName,context).then((response){
       if(response.statusCode==200||response.statusCode==201) {
-        // city.text = "";
-        // country.text = "";
-        // name.text = "";
-        // phone.text = "";
-        // email.text = "";
+        city.text = "";
+        country.text = "";
+        name.text = "";
+        phone.text = "";
+        email.text = "";
         image = "";
         comment.text = "";
         customerFeedback.clear();
@@ -132,5 +118,7 @@ void getFeedBackforCustomer(int businessId,BuildContext context){
     phone?.dispose();
     email?.dispose();
     name?.dispose();
+    city?.dispose();
+    country?.dispose();
   }
 }

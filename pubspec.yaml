@@ -62,10 +62,8 @@ dependencies:
   printing: ^5.0.0
   pie_chart: ^5.0.0
   custom_radio_grouped_button: ^1.0.6+1
-  firebase_core: ^0.4.0
-  firebase_auth: ^0.11.1+6
-  cloud_firestore: ^0.12.5
   firebase_messaging: ^5.0.2
+  overlay_support: ^1.2.0
 
 dev_dependencies:
   flutter_test:

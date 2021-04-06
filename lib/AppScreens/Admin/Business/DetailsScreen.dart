@@ -67,7 +67,7 @@ class _DetailPageState extends State<DetailPage> {
                         SizedBox(width: 130,),
                         IconButton(icon: FaIcon(FontAwesomeIcons.commentMedical, color: color3, size: 35,),
                             onPressed: (){
-                               Navigator.push(context,MaterialPageRoute(builder: (context)=>SelectReviewCategoryList(widget.business.id)));
+                               Navigator.push(context,MaterialPageRoute(builder: (context)=>SelectReviewCategoryList(widget.business.id,widget.business.ownerId,widget.business.name)));
                             })
                       ],
                     ),

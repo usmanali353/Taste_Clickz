@@ -2,17 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/AppScreens/Admin/Feedbacks/AddRating.dart';
+import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/Controllers/FeedbackController.dart';
 import 'package:review_app/components/colorConstants.dart';
 
-class CustomerInfoForFeedback extends StatelessWidget{
-  int businessId,categoryId,subcategoryId;
+class CustomerInfoForFeedback extends StatefulWidget{
+  var businessId,categoryId,subcategoryId,businessOwnerId,businessName;
 
-  CustomerInfoForFeedback({this.businessId, this.categoryId, this.subcategoryId});
+  CustomerInfoForFeedback({this.businessId, this.categoryId, this.subcategoryId,this.businessOwnerId,this.businessName});
 
   @override
+  _CustomerInfoForFeedbackState createState() => _CustomerInfoForFeedbackState();
+}
+
+class _CustomerInfoForFeedbackState extends State<CustomerInfoForFeedback> {
+  final _feedbackController =Get.put(FeedbackController());
+  final _accountController=Get.find<AccountController>();
+  @override
+  void initState() {
+    if(_accountController.getLoggedInUserData()!=null){
+      if(_accountController.getLoggedInUserData().userInfo.name!=null&&_accountController.getLoggedInUserData().userInfo.name.isNotEmpty){
+        _feedbackController.name.text=_accountController.getLoggedInUserData().userInfo.name;
+      }
+      if(_accountController.getLoggedInUserData().userInfo.email!=null&&_accountController.getLoggedInUserData().userInfo.email.isNotEmpty){
+        _feedbackController.email.text=_accountController.getLoggedInUserData().userInfo.email;
+      }
+      if(_accountController.getLoggedInUserData().userInfo.phone!=null&&_accountController.getLoggedInUserData().userInfo.phone.isNotEmpty){
+        _feedbackController.phone.text=_accountController.getLoggedInUserData().userInfo.phone;
+      }
+      if(_accountController.getLoggedInUserData().userInfo.city!=null&&_accountController.getLoggedInUserData().userInfo.city.isNotEmpty){
+        _feedbackController.city.text=_accountController.getLoggedInUserData().userInfo.city;
+      }
+      if(_accountController.getLoggedInUserData().userInfo.country!=null&&_accountController.getLoggedInUserData().userInfo.country.isNotEmpty){
+        _feedbackController.country.text=_accountController.getLoggedInUserData().userInfo.country;
+      }
+    }
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    final _feedbackController =Get.put(FeedbackController());
     return Scaffold(
       body: Container(
         color: color4,
@@ -284,7 +312,7 @@ class CustomerInfoForFeedback extends StatelessWidget{
                 padding: const EdgeInsets.all(5.0),
                 child: InkWell(
                   onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>AddRatings(businessId: businessId,categoryId: categoryId,subcategoryId: subcategoryId,)));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>AddRatings(businessId: widget.businessId,categoryId: widget.categoryId,subcategoryId: widget.subcategoryId,businessOwnerId: widget.businessOwnerId,businessName: widget.businessName,)));
                   },
                   child: Center(
                     child: Card(
@@ -318,7 +346,6 @@ class CustomerInfoForFeedback extends StatelessWidget{
       ),
     );
   }
-
 }
 class WaveClipperTwo extends CustomClipper<Path> {
   /// reverse the wave direction in vertical axis

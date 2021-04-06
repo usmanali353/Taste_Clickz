@@ -139,4 +139,19 @@ class Utils{
      }
      return barcode;
    }
+   static Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) {
+     dynamic data;
+     if (message.containsKey('data')) {
+       // Handle data message
+       data = message['data'];
+     }
+
+     if (message.containsKey('notification')) {
+       // Handle notification message
+       data = message['notification'];
+     }
+     print(data.toString());
+     return data;
+     // Or do other work.
+   }
 }

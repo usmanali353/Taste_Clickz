@@ -14,7 +14,8 @@ import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class BusinessCategoryList extends StatefulWidget {
-  int businessId;
+  var businessId;
+
   BusinessCategoryList(this.businessId);
   @override
   _BusinessCategoryListState createState() => _BusinessCategoryListState();

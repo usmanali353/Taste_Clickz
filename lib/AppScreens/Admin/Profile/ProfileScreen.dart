@@ -1,4 +1,5 @@
- import 'package:flutter/cupertino.dart';
+ import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -54,7 +55,9 @@ class ProfileScreen extends StatelessWidget {
                                     icon:  FaIcon(FontAwesomeIcons.signOutAlt, color: color3, size: 25,),
                                     onPressed: (){
                                       locator<GetStorage>().remove("token");
-                                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NewSplashScreen()), (route) => false);
+                                      FirebaseMessaging().unsubscribeFromTopic(_accountController.getLoggedInUserData().userInfo.id).then((value){
+                                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NewSplashScreen()), (route) => false);
+                                      });
                                     },
                                   ),
                                 ],

@@ -100,6 +100,7 @@ class _BusinessListState extends ResumableState<BusinessList> {
                             push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));
                           },
                     child: Container(
+
                       width: MediaQuery.of(context).size.width,
                       height: 210,
                       decoration: BoxDecoration(

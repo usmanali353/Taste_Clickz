@@ -15,16 +15,15 @@ import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class AddRatings extends StatefulWidget {
-  int businessId,categoryId,subcategoryId;
+  var businessId,categoryId,subcategoryId,businessOwnerId,businessName;
 
-  AddRatings({this.businessId,this.categoryId,this.subcategoryId});
+  AddRatings({this.businessId,this.categoryId,this.subcategoryId,this.businessOwnerId,this.businessName});
 
   @override
   _AddRatingsState createState() => _AddRatingsState();
 }
 
 class _AddRatingsState extends State<AddRatings> {
-  StreamController _event =StreamController<dynamic>.broadcast();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   var groupValue,groupValue2;
   final _questionController =Get.put(QuestionController());
@@ -59,7 +58,7 @@ class _AddRatingsState extends State<AddRatings> {
           IconButton(
             icon:Icon(Icons.add, color: color4, size: 30,),
             onPressed: (){
-             Navigator.push(context,MaterialPageRoute(builder: (context)=>CommentWithPicture(businessId: widget.businessId,subcategoryId: widget.subcategoryId,categoryId: widget.categoryId,)));
+             Navigator.push(context,MaterialPageRoute(builder: (context)=>CommentWithPicture(businessId: widget.businessId,subcategoryId: widget.subcategoryId,categoryId: widget.categoryId,businessOwnerId: widget.businessOwnerId,businessName: widget.businessName,)));
             },
           )
         ],

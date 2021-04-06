@@ -1,20 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:need_resume/need_resume.dart';
-import 'package:review_app/AppScreens/Admin/BusinessCategory/AddBusinessCategory.dart';
-import 'package:review_app/AppScreens/Admin/BusinessSubcategory/BusinessSubCategoryList.dart';
 import 'package:review_app/AppScreens/Customer/ReviewCategory/SelectReviewSubCategory.dart';
 import 'package:review_app/Controllers/CategoryController.dart';
 import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class SelectReviewCategoryList extends StatefulWidget {
-  int businessId;
-  SelectReviewCategoryList(this.businessId);
+  var businessId,businessOwnerId,businessName;
+  SelectReviewCategoryList(this.businessId,this.businessOwnerId,this.businessName);
   @override
   _SelectReviewCategoryListState createState() => _SelectReviewCategoryListState();
 }
@@ -86,7 +83,7 @@ class _SelectReviewCategoryListState extends ResumableState<SelectReviewCategory
                     ),
                     child: ListTile(
                       onTap: (){
-                        Navigator.push(context,MaterialPageRoute(builder:(context)=>SelectReviewSubCategoryList(widget.businessId,categoriesController.categoryList[index].id)));
+                        Navigator.push(context,MaterialPageRoute(builder:(context)=>SelectReviewSubCategoryList(widget.businessId,categoriesController.categoryList[index].id,widget.businessOwnerId,widget.businessName)));
                       },
                       title: Text(categoriesController.categoryList!=null&&categoriesController.categoryList[index].name!=null?categoriesController.categoryList[index].name:"-",
                         style: GoogleFonts.prompt(

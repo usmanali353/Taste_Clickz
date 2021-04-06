@@ -155,7 +155,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                                     ),
                                   ),
                                 ),
-                                Text("-",
+                                Text(_feedbackcontroller.feedbacks[index].city!=null?_feedbackcontroller.feedbacks[index].city:"-",
                                   style: GoogleFonts.prompt(
                                     textStyle: TextStyle(
                                         color: color1,
@@ -177,7 +177,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                                     ),
                                   ),
                                 ),
-                                Text("-",
+                                Text(_feedbackcontroller.feedbacks[index].country!=null?_feedbackcontroller.feedbacks[index].country:"-",
                                   style: GoogleFonts.prompt(
                                     textStyle: TextStyle(
                                         color: color1,

@@ -14,7 +14,7 @@ import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class BusinessSubCategoryList extends StatefulWidget {
-  int businessId,categoryId;
+  var businessId,categoryId;
 
   BusinessSubCategoryList(this.businessId, this.categoryId);
 

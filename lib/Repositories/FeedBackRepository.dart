@@ -14,7 +14,7 @@ import 'package:review_app/Utils/Utils.dart';
 
 class FeedBackRepository extends IFeedBackRepository{
   @override
-  Future<http.Response> AddFeedBack(feedback f, BuildContext context) async {
+  Future<http.Response> AddFeedBack(feedback f,String businessOwnerId,String businessName ,BuildContext context) async {
     ArsProgressDialog progressDialog = ArsProgressDialog(
         context,
         blur: 2,
@@ -25,7 +25,7 @@ class FeedBackRepository extends IFeedBackRepository{
       locator<Logger>().i(f.customerFeedBacks.toString());
       print(feedback.FeedbackAddToJson(f));
       progressDialog.show();
-      var res=await http.post(Utils.baseUrl()+"Feedback",body:feedback.FeedbackAddToJson(f),headers: {"Content-Type":"application/json","Authorization":"Bearer ${locator<GetStorage>().read("token")}"});
+      var res=await http.post(Utils.baseUrl()+"Feedback?businessOwnerId=$businessOwnerId&businessName=$businessName",body:feedback.FeedbackAddToJson(f),headers: {"Content-Type":"application/json","Authorization":"Bearer ${locator<GetStorage>().read("token")}"});
       progressDialog.dismiss();
       locator<Logger>().i(res.statusCode);
       if(res.statusCode==200||res.statusCode==201)
