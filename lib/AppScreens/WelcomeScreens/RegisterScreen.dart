@@ -9,13 +9,18 @@ import 'package:review_app/AppScreens/WelcomeScreens/LoginScreen.dart';
 import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/components/colorConstants.dart';
 
-class RegisterScreen extends StatelessWidget{
+class RegisterScreen extends StatefulWidget{
   String role;
 
   RegisterScreen(this.role);
 
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
 
+class _RegisterScreenState extends State<RegisterScreen> {
   Address primaryAddress;
+  bool isVisible=false;
   TextEditingController  address;
 
   @override
@@ -199,7 +204,7 @@ class RegisterScreen extends StatelessWidget{
                                       fontWeight: FontWeight.w500
                                   ),
                                 ),
-                                obscureText: accountController.signUpPasswordIsVisible,
+                                obscureText: isVisible,
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -215,12 +220,13 @@ class RegisterScreen extends StatelessWidget{
                                         fontWeight: FontWeight.w500
                                     ),
                                   ),
-                                  suffixIcon: IconButton(icon: Icon(accountController.signUpPasswordIsVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),
+                                  suffixIcon: IconButton(icon: Icon(isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),
                                     onPressed: () {
-                                     if(accountController.signUpPasswordIsVisible){
-                                       accountController.signUpPasswordIsVisible=false;
-                                     }else
-                                       accountController.signUpPasswordIsVisible=true;
+                                     if(isVisible){
+                                       isVisible=false;
+                                     }else {
+                                       isVisible = true;
+                                     }
                                   },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                 ),
                               ),

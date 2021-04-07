@@ -27,13 +27,16 @@ class BusinessRepository extends IBusinessRepository{
         progressDialog.dismiss();
         Navigator.pop(context,"Refresh");
         Utils.showSuccess(context,"Business Added Sucessfully");
+        return res;
       }else if(res.body!=null&&res.body.isNotEmpty){
         progressDialog.dismiss();
         locator<Logger>().i(res.body.trim());
         Utils.showError(context,res.body.trim());
+        return res;
       }else {
         progressDialog.dismiss();
-        Utils.showError(context, res.statusCode.toString());
+        Utils.showError(context,"Not Added");
+        return res;
       }
     }catch(e){
       progressDialog.dismiss();
@@ -66,38 +69,6 @@ class BusinessRepository extends IBusinessRepository{
     }catch(e){
       locator<Logger>().i(e);
      // Utils.showError(context,e.toString());
-      progressDialog.dismiss();
-    }finally{
-      progressDialog.dismiss();
-    }
-    return null;
-  }
-
-  @override
-  Future<List<dynamic>> getAllBusiness(BuildContext context) async{
-    ArsProgressDialog progressDialog = ArsProgressDialog(
-        context,
-        blur: 2,
-        backgroundColor: Color(0x33000000),
-        animationDuration: Duration(milliseconds: 500));
-    try{
-     // progressDialog.show();
-      var response= await http.get(Utils.baseUrl()+"Business/GetAllBusiness",headers: {"Authorization":"Bearer ${locator<GetStorage>().read("token")}"});
-      if(response.statusCode==200){
-        progressDialog.dismiss();
-        print(jsonDecode(response.body).runtimeType);
-        return jsonDecode(response.body);
-       // return AllBusiness.allBusinessFromJson(response.body);
-      }else if(response.body!=null&&response.body.isNotEmpty){
-        progressDialog.dismiss();
-        locator<Logger>().i(response.body);
-        // Utils.showError(context,response.body);
-      }else
-        progressDialog.dismiss();
-      Utils.showError(context,response.statusCode.toString());
-    }catch(e){
-     // locator<Logger>().i(e.toString());
-       Utils.showError(context,e.toString());
       progressDialog.dismiss();
     }finally{
       progressDialog.dismiss();

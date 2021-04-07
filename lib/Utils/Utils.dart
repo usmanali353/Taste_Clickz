@@ -96,6 +96,10 @@ class Utils{
      var image = await ImagePicker.pickImage(source: ImageSource.gallery);
      return image;
    }
+   static Future<File> getImageCamera() async {
+     var image = await ImagePicker.pickImage(source: ImageSource.camera);
+     return image;
+   }
    static void shareImage(BuildContext context,Uint8List pngBytes) async{
      try{
        var rng = new Random();

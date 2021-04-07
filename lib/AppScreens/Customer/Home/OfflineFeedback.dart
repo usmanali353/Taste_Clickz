@@ -34,17 +34,6 @@ class _IndividualFeedbacksState extends State<OfflineFeedbacks> {
     super.initState();
   }
 
-  String getBusinessName(int id){
-    String businessName ="";
-    if(id!=null && businessController.allBusinesses.length>0){
-      for(int i=0;i<businessController.allBusinesses.length;i++){
-        if(businessController.allBusinesses[i]['id'] == id){
-          businessName = businessController.allBusinesses[i]['name'];
-        }
-      }
-    }
-    return businessName;
-  }
   @override
   Widget build(BuildContext context) {
     // final _feedbackcontroller=Get.put(FeedbackController());
@@ -68,14 +57,10 @@ class _IndividualFeedbacksState extends State<OfflineFeedbacks> {
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh: ()async{
-          return Utils.check_connectivity().then((isConnected){
-            businessController.getAllBusiness(context);
-            print("iuytreyuitrtyu"+businessController.allBusinesses.toString());
-            dbhelper().getFeedBacks().then((value) {
-              feedbackList.clear();
-              setState(() {
-                feedbackList = value;
-              });
+          return dbhelper().getFeedBacks().then((value) {
+            feedbackList.clear();
+            setState(() {
+              feedbackList = value;
             });
           });
         },
@@ -133,7 +118,7 @@ class _IndividualFeedbacksState extends State<OfflineFeedbacks> {
                                     ),
                                   ),
                                 ),
-                                Text(getBusinessName(feedbackList[index]['businessId']),
+                                Text(feedbackList[index]['businessName']!=null?feedbackList[index]['businessName']:"-",
                                   style: GoogleFonts.prompt(
                                     textStyle: TextStyle(
                                         color: color1,

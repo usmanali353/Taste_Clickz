@@ -6,8 +6,8 @@ import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/components/colorConstants.dart';
 
  class ForgotPassword extends StatelessWidget{
-   bool isVisible= true;
-   bool isVisible2= true;
+   bool isVisible= false;
+   bool isVisible2= false;
   @override
   Widget build(BuildContext context) {
    final _accountController=Get.put(AccountController());
@@ -162,7 +162,11 @@ import 'package:review_app/components/colorConstants.dart';
                                    ),
                                  ),
                                  suffixIcon: IconButton(icon: Icon(isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
-
+                                   if(isVisible){
+                                     isVisible=false;
+                                   }else {
+                                     isVisible = true;
+                                   }
                                  },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                ),
                              ),
@@ -183,7 +187,7 @@ import 'package:review_app/components/colorConstants.dart';
                                      fontWeight: FontWeight.w500
                                  ),
                                ),
-                               obscureText: isVisible,
+                               obscureText: isVisible2,
                                keyboardType: TextInputType.visiblePassword,
                                decoration: InputDecoration(
                                  focusedBorder: OutlineInputBorder(
@@ -200,7 +204,11 @@ import 'package:review_app/components/colorConstants.dart';
                                    ),
                                  ),
                                  suffixIcon: IconButton(icon: Icon(isVisible2?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
-
+                                   if(isVisible2){
+                                     isVisible2=false;
+                                   }else {
+                                     isVisible2 = true;
+                                   }
                                  },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                ),
 

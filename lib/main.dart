@@ -60,23 +60,52 @@ class MyApp extends StatelessWidget {
     );
   }
    Widget isloggedIn(){
-     var token=locator<GetStorage>().read("token");
-     print("token "+(token!=null).toString());
-     if(token!=null){
-
-       var info =TokenPayLoad.fromJson(Utils.parseJwt(token));
-       print("info "+(info!=null).toString());
-       if(info!=null){
-         if(DateTime.fromMillisecondsSinceEpoch(int.parse(info.exp.toString()+"000")).isAfter(DateTime.now())){
-            if(info.role=="Admin"){
+    try{
+      String token="";
+      DateTime expiryDate;
+      token=locator<GetStorage>().read("token");
+      print("token "+(token!=null).toString());
+      if(token!=null) {
+        TokenPayLoad info = TokenPayLoad.fromJson(Utils.parseJwt(token));
+        print("info " + (info != null).toString());
+        print("Expiry Date " + info.exp.toString());
+        print("role ${info.role}");
+        print("Date ${DateTime.fromMillisecondsSinceEpoch(
+            int.parse(info.exp.toString() + "000"))}");
+        if (info != null) {
+          expiryDate = DateTime.fromMillisecondsSinceEpoch(
+              int.parse(info.exp.toString() + "000"));
+          // print(DateTime
+          //     .now()
+          //     .subtract(Duration(hours: 0))
+          //     .difference(expiryDate)
+          //     .isNegative);
+          // bool isLogin = false;
+          // isLogin = DateTime
+          //     .now()
+          //     .subtract(Duration(hours: 16))
+          //     .difference(expiryDate)
+          //     .isNegative;
+          if (expiryDate.isAfter(DateTime.now())) {
+            if (info.role == "Admin") {
               return BottomNavBar();
-            }else{
+            } else {
               return ClientBottomNavBar();
             }
-         }
-       }
-     }else
-       return OnBoardingScreen();
+          }else {
+            return OnBoardingScreen();
+          }
+
+        }else {
+          return OnBoardingScreen();
+        }
+      }else {
+        return OnBoardingScreen();
+      }
+    }catch(e){
+      print(e);
+    }
+
   }
 }
 

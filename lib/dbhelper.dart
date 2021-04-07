@@ -24,6 +24,7 @@ class dbhelper {
     await db.execute("CREATE TABLE feedbacks ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
         "customerName TEXT,"
+        "businessName TEXT,"
         "phone  TEXT,"
         "email TEXT,"
         "city TEXT,"
@@ -41,7 +42,7 @@ class dbhelper {
     print(f);
     var dbClient = await db;
 
-    var result = await dbClient.insert("feedbacks",{"customerName":f.customerName,"phone":f.phone,"email":f.email,"city":f.city,"country":f.country,"comment":f.comment,"image":f.image,"categoryId":f.categoryId,"subCategoryId":f.subCategoryId,"businessId":f.businessId,"overallRating":f.overallRating,"customerFeedBacks":jsonEncode(f.customerFeedBacks)});
+    var result = await dbClient.insert("feedbacks",{"customerName":f.customerName,"phone":f.phone,"email":f.email,"city":f.city,"country":f.country,"comment":f.comment,"image":f.image,"categoryId":f.categoryId,"subCategoryId":f.subCategoryId,"businessId":f.businessId,"overallRating":f.overallRating,"customerFeedBacks":jsonEncode(f.customerFeedBacks),"businessName":f.businessName});
     return result;
   }
   Future<List> getFeedBacks() async {
