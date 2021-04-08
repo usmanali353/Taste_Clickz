@@ -20,7 +20,7 @@ class RegisterScreen extends StatefulWidget{
 
 class _RegisterScreenState extends State<RegisterScreen> {
   Address primaryAddress;
-  bool isVisible=false;
+  bool isVisible=true;
   TextEditingController  address;
 
   @override
@@ -222,11 +222,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                   suffixIcon: IconButton(icon: Icon(isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),
                                     onPressed: () {
-                                     if(isVisible){
-                                       isVisible=false;
-                                     }else {
-                                       isVisible = true;
-                                     }
+                                    setState(() {
+                                      if(isVisible){
+                                        isVisible=false;
+                                      }else {
+                                        isVisible = true;
+                                      }
+                                    });
                                   },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                 ),
                               ),

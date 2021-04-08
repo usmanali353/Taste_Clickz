@@ -9,6 +9,7 @@ import 'package:review_app/AppScreens/Admin/Business/AddBusiness.dart';
 import 'package:review_app/AppScreens/Admin/Business/BusinessReport.dart';
 import 'package:review_app/AppScreens/Admin/Business/BusinessQrCode.dart';
 import 'package:review_app/AppScreens/Admin/BusinessCategory/BusinessCategoryList.dart';
+import 'package:review_app/AppScreens/Admin/Feedbacks/IndividualFeedbacks.dart';
 import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/Controllers/BusinessController.dart';
 import 'package:review_app/Utils/Utils.dart';
@@ -153,7 +154,7 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 135),
                                     child: RatingBar.builder(
-                                      initialRating: 3,
+                                      initialRating: double.parse(businessController.businesses[index].overallRating.toStringAsFixed(1)),
                                       minRating: 1,
                                       direction: Axis.horizontal,
                                       allowHalfRating: true,
@@ -229,67 +230,34 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                       ],
                                     ),
                                   ),
+                                  SizedBox(height: 7,),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 145),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Column(
-                                          children: [
-                                            IconButton(
-                                              icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
-                                              onPressed: (){
-                                                Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
-                                              },
-                                            ),
-                                            Text("Report",
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color1,
-                                                    //fontSize: 15,
-                                                    fontWeight: FontWeight.w500
-                                                ),
-                                              ),
-                                            )
-                                          ],
+                                        IconButton(
+                                          icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
+                                          onPressed: (){
+                                            Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
+                                          },
                                         ),
-                                        Column(
-                                          children: [
-                                            IconButton(
-                                              icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
-                                              onPressed: (){
-                                                Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
-                                              },
-                                            ),
-                                            Text("QRCode",
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color1,
-                                                    //fontSize: 15,
-                                                    fontWeight: FontWeight.w500
-                                                ),
-                                              ),
-                                            )
-                                          ],
+                                        IconButton(
+                                          icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
+                                          onPressed: (){
+                                            push(context,MaterialPageRoute(builder:(context)=>BusinessQRCode(businessController.businesses[index])));                                              },
                                         ),
-                                        Column(
-                                          children: [
-                                            IconButton(
-                                              icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
-                                              onPressed: (){
-                                                push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
-                                            ),
-                                            Text("Category ",
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color1,
-                                                    //fontSize: 15,
-                                                    fontWeight: FontWeight.w500
-                                                ),
-                                              ),
-                                            )
-                                          ],
+                                        IconButton(
+                                          icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
+                                          onPressed: (){
+                                            push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
                                         ),
+                                        IconButton(
+                                          icon:  FaIcon(FontAwesomeIcons.comments, color: color3,  size: 30,),
+                                          onPressed: (){
+                                            push(context,MaterialPageRoute(builder:(context)=>IndividualFeedbacks(businessId:businessController.businesses[index].id,isAdmin: true,)));                                              },
+                                        ),
+
                                       ],
                                     ),
                                   )

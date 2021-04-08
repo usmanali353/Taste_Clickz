@@ -13,7 +13,7 @@ class LoginScreen extends StatefulWidget{
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool isVisible=false;
+  bool isVisible=true;
 
   @override
   Widget build(BuildContext context) {

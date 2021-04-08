@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/Controllers/FeedbackController.dart';
-import 'package:review_app/Models/feedback.dart';
 import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
+
+import 'FeedbackDetails.dart';
 
 class IndividualFeedbacks extends StatefulWidget {
   int businessId;
@@ -162,8 +163,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                                       ),
                                     ),
                                     Text(
-                                      "-",
-                                      //_feedbackcontroller.feedbacks[index].businessName,
+                                      _feedbackcontroller.feedbacks[index].businessName!=null?_feedbackcontroller.feedbacks[index].businessName:"-",
                                       style: GoogleFonts.prompt(
                                         textStyle: TextStyle(
                                           color: color1,

@@ -137,9 +137,10 @@ class BusinessRepository extends IBusinessRepository{
         progressDialog.dismiss();
         locator<Logger>().i(response.body);
         // Utils.showError(context,response.body);
-      }else
+      }else {
         progressDialog.dismiss();
-      Utils.showError(context,response.statusCode.toString());
+        Utils.showError(context, response.statusCode.toString());
+      }
     }catch(e){
       locator<Logger>().i(e);
       // Utils.showError(context,e.toString());

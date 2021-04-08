@@ -5,9 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/components/colorConstants.dart';
 
- class ForgotPassword extends StatelessWidget{
-   bool isVisible= false;
-   bool isVisible2= false;
+ class ForgotPassword extends StatefulWidget{
+  @override
+  _ForgotPasswordState createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPassword> {
+   bool isVisible= true;
+
+   bool isVisible2= true;
+
   @override
   Widget build(BuildContext context) {
    final _accountController=Get.put(AccountController());
@@ -162,11 +169,13 @@ import 'package:review_app/components/colorConstants.dart';
                                    ),
                                  ),
                                  suffixIcon: IconButton(icon: Icon(isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
-                                   if(isVisible){
-                                     isVisible=false;
-                                   }else {
-                                     isVisible = true;
-                                   }
+                                   setState(() {
+                                     if(isVisible){
+                                       isVisible=false;
+                                     }else {
+                                       isVisible = true;
+                                     }
+                                   });
                                  },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                ),
                              ),
@@ -204,11 +213,13 @@ import 'package:review_app/components/colorConstants.dart';
                                    ),
                                  ),
                                  suffixIcon: IconButton(icon: Icon(isVisible2?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
-                                   if(isVisible2){
-                                     isVisible2=false;
-                                   }else {
-                                     isVisible2 = true;
-                                   }
+                                   setState(() {
+                                     if(isVisible2){
+                                       isVisible2=false;
+                                     }else {
+                                       isVisible2 = true;
+                                     }
+                                   });
                                  },),//Icon(Icons.https,color: yellowColor,size: 27,)
                                ),
 
@@ -284,8 +295,7 @@ import 'package:review_app/components/colorConstants.dart';
      ),
    );
   }
-
- }
+}
 
 
 

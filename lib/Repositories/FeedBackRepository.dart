@@ -41,7 +41,7 @@ class FeedBackRepository extends IFeedBackRepository{
       }else if(res.body!=null&&res.body.isNotEmpty){
         progressDialog.dismiss();
         locator<Logger>().i(res.body.trim());
-        Utils.showSuccess(context,res.body.trim());
+        //Utils.showSuccess(context,res.body.trim());
        // Utils.showError(context,res.body.trim());
         return res;
       }else {
@@ -51,7 +51,7 @@ class FeedBackRepository extends IFeedBackRepository{
       }
     }catch(e){
       progressDialog.dismiss();
-      locator<Logger>().e(e);
+      locator<Logger>().e(e.toString());
       //Utils.showError(context, e.toString());
     }finally{
       progressDialog.dismiss();
