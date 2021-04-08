@@ -28,12 +28,15 @@ class QuestionRepository extends IQuestionRepository{
         progressDialog.dismiss();
         Navigator.pop(context,"Refresh");
         Utils.showSuccess(context,res.body.trim());
+        return res;
       }else if(res.body!=null&&res.body.isNotEmpty){
         progressDialog.dismiss();
         locator<Logger>().w(res.body.trim());
+        return res;
       }else {
         progressDialog.dismiss();
-        Utils.showError(context, res.statusCode.toString());
+        Utils.showError(context,"Not Added");
+        return res;
       }
     }catch(e){
       progressDialog.dismiss();

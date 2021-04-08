@@ -94,7 +94,6 @@ class _QuestionnaireListState extends ResumableState<QuestionnaireList> {
                         caption: 'Update',
                         onTap: () {
                           push(context,MaterialPageRoute(builder:(context)=>UpdateQuestion(widget.businessId,widget.categoryId,widget.subCategoryId,_questionController.questionList[index])));
-
                         },
                       ),
                       IconSlideAction(
@@ -118,8 +117,9 @@ class _QuestionnaireListState extends ResumableState<QuestionnaireList> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print(_questionController.questionList[index].id);
-                             Navigator.push(context,MaterialPageRoute(builder:(context)=>QuestionOptionsList(_questionController.questionList[index].id)));
+                             if(_questionController.questionList[index].questionType==3) {
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => QuestionOptionsList(_questionController.questionList[index].id)));
+                             }
                           },
                           title: Text(_questionController.questionList[index].questionText,
                             style: GoogleFonts.prompt(

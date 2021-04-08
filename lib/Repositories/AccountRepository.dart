@@ -83,9 +83,11 @@ class AccountRepository extends IAccountRepository{
       }else if(res.body!=null&&res.body.isNotEmpty){
         progressDialog.dismiss();
         Utils.showError(context,res.body.trim());
+        return res;
       }else {
         progressDialog.dismiss();
-        Utils.showError(context, res.statusCode.toString());
+        Utils.showError(context,"Failed to Register");
+        return res;
       }
     }catch(e){
       progressDialog.dismiss();

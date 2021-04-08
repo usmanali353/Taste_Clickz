@@ -59,6 +59,7 @@ final _accountController=Get.find<AccountController>();
            businessId: businessId,
            email: email.text,
            customerName: name.text,
+           businessName: businessName,
            comment: comment.text,
            city: city.text,
            country: country.text,

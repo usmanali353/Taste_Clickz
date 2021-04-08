@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/AppScreens/Admin/Feedbacks/AddRating.dart';
 import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/Controllers/FeedbackController.dart';
+import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
 class CustomerInfoForFeedback extends StatefulWidget{
@@ -312,8 +313,22 @@ class _CustomerInfoForFeedbackState extends State<CustomerInfoForFeedback> {
                 padding: const EdgeInsets.all(5.0),
                 child: InkWell(
                   onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>AddRatings(businessId: widget.businessId,categoryId: widget.categoryId,subcategoryId: widget.subcategoryId,businessOwnerId: widget.businessOwnerId,businessName: widget.businessName,)));
-                  },
+                    if (_feedbackController.name.text == null || _feedbackController.name.text.isEmpty) {
+                      Utils.showError(context, "Name Required");
+                    } else if (_feedbackController.email.text == null || _feedbackController.email.text.isEmpty) {
+                      Utils.showError(context, "Email Required");
+                    } else if (!Utils.validateEmail(_feedbackController.email.text)) {
+                      Utils.showError(context, "Email Not Valid");
+                    } else if (_feedbackController.phone.text == null || _feedbackController.phone.text.isEmpty) {
+                      Utils.showError(context, "Phone is Required");
+                    } else if (_feedbackController.city.text == null || _feedbackController.city.text.isEmpty) {
+                      Utils.showError(context, "City is Required");
+                    } else if (_feedbackController.country.text == null || _feedbackController.country.text.isEmpty) {
+                      Utils.showError(context, "Country is Required");
+                    } else {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddRatings(businessId: widget.businessId, categoryId: widget.categoryId, subcategoryId: widget.subcategoryId, businessOwnerId: widget.businessOwnerId, businessName: widget.businessName,)));
+                    }
+                },
                   child: Center(
                     child: Card(
                       elevation: 8,

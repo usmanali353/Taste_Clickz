@@ -140,7 +140,7 @@ class _CommentWithPictureState extends State<CommentWithPicture> {
                               MaterialButton(
                                 color: color3,
                                 onPressed: (){
-                                  Utils.getImage().then((image_file){
+                                  Utils.getImageCamera().then((image_file){
                                     if(image_file!=null){
                                       image_file.readAsBytes().then((image){
                                         if(image!=null){

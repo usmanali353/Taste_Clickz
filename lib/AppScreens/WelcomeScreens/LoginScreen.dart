@@ -7,7 +7,14 @@ import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/Controllers/AccountController.dart';
 import 'package:review_app/components/colorConstants.dart';
 
-class LoginScreen extends StatelessWidget{
+class LoginScreen extends StatefulWidget{
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isVisible=false;
+
   @override
   Widget build(BuildContext context) {
     final  accountController = Get.put(AccountController());
@@ -150,7 +157,7 @@ class LoginScreen extends StatelessWidget{
                                       fontWeight: FontWeight.w500
                                   ),
                                 ),
-                                obscureText: true,
+                                obscureText: isVisible,
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -166,8 +173,14 @@ class LoginScreen extends StatelessWidget{
                                         fontWeight: FontWeight.w500
                                     ),
                                   ),
-                                  suffixIcon: IconButton(icon: Icon(accountController.isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
-
+                                  suffixIcon: IconButton(icon: Icon(isVisible?Icons.visibility:Icons.visibility_off,color: color3,size: 27),onPressed: () {
+                                    setState(() {
+                                      if(isVisible){
+                                        isVisible=false;
+                                      }else{
+                                        isVisible=true;
+                                      }
+                                    });
                                   },),//(Icons.https,color: yellowColor,size: 27,)
                                 ),
 
