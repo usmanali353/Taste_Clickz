@@ -279,7 +279,7 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                               onPressed: (){
                                                 push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
                                             ),
-                                            Text("Category",
+                                            Text("Category ",
                                               style: GoogleFonts.prompt(
                                                 textStyle: TextStyle(
                                                     color: color1,
