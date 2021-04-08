@@ -72,7 +72,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                           fontWeight: FontWeight.bold
                                       ),
                                     ),
-                                  )),
+                                  )
+                                  ),
                                 ),
                               ),
                             ),

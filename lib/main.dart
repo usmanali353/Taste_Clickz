@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:review_app/AppScreens/WelcomeScreens/NewOnboarding.dart';
 import 'package:review_app/AppScreens/WelcomeScreens/OnBoardingScreen.dart';
 import 'Utils/Locator.dart';
 import 'Utils/Utils.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
     return OverlaySupport(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OnBoardingScreen(),
+        home: NewOnboarding(),
       ),
     );
   }

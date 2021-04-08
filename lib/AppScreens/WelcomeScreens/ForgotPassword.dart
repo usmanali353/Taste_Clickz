@@ -222,7 +222,7 @@ import 'package:review_app/components/colorConstants.dart';
                  child: Center(
                    child: Card(
                      elevation: 8,
-                     color: color1,
+                     color: color3,
                      child: Container(
                        height: 55,
                        width: 250,

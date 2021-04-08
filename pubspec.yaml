@@ -64,6 +64,7 @@ dependencies:
   custom_radio_grouped_button: ^1.0.6+1
   firebase_messaging: ^5.0.2
   overlay_support: ^1.2.0
+  slider_button: ^0.6.0
 
 dev_dependencies:
   flutter_test:
