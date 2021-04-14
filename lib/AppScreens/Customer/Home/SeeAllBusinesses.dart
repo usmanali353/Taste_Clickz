@@ -149,7 +149,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                               left: 110,
                               child: Card(
                                 elevation: 10,
-                                color: color4,
+                                color: Colors.white,
                                 child: Container(
                                   height: 160,
                                   width: 280,
