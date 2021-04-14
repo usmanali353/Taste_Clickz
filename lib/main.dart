@@ -5,6 +5,7 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:review_app/AppScreens/Admin/BottomNavBar/BottomNavBar.dart';
 import 'package:review_app/AppScreens/Customer/BottomNavBar/BottomNavBar.dart';
 import 'package:review_app/AppScreens/WelcomeScreens/NewOnboarding.dart';
+import 'package:review_app/AppScreens/WelcomeScreens/NewSplashScreen.dart';
 import 'package:review_app/AppScreens/WelcomeScreens/OnBoardingScreen.dart';
 import 'package:review_app/Models/TokenPayLoad.dart';
 import 'Utils/Locator.dart';
@@ -81,14 +82,14 @@ class MyApp extends StatelessWidget {
               return ClientBottomNavBar();
             }
           }else {
-            return NewOnboarding();
+            return NewSplashScreen();
           }
 
         }else {
-          return NewOnboarding();
+          return NewSplashScreen();
         }
       }else {
-        return NewOnboarding();
+        return NewSplashScreen();
       }
     }catch(e){
       print(e);

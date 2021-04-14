@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:review_app/AppScreens/Admin/Feedbacks/FeedbackDetails.dart';
 import 'package:review_app/Controllers/FeedbackController.dart';
 import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
@@ -63,7 +64,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
           });
         },
         child: Container(
-          color: Colors.white,
+          color: color4,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child:

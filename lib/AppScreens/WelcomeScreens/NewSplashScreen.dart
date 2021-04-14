@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animator/flutter_animator.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:review_app/AppScreens/Customer/Home/SeeAllBusinesses.dart';
@@ -50,14 +51,15 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                 ),
               ),
               Center(
-                child: Container(
-                  width: 400,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-
-                      image: AssetImage('assets/tasteclicks.png')
-                    )
+                child: FadeInDown(
+                  child: Container(
+                    width: 400,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/tasteclicks.png')
+                      )
+                    ),
                   ),
                 )
               ),
@@ -67,21 +69,23 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterBusiness()));
                   },
-                  child: Container(
-                    height: 60,
-                    width: 310,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: color3
-                        //border: Border.all(color: color3, width: 2)
-                    ),
-                    child: Center(
-                      child: Text("Register Business",
-                        style: GoogleFonts.prompt(
-                          textStyle: TextStyle(
-                              color: color4,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
+                  child: FadeInLeft(
+                    child: Container(
+                      height: 60,
+                      width: 310,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: color3
+                          //border: Border.all(color: color3, width: 2)
+                      ),
+                      child: Center(
+                        child: Text("Register Business",
+                          style: GoogleFonts.prompt(
+                            textStyle: TextStyle(
+                                color: color4,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                            ),
                           ),
                         ),
                       ),
@@ -95,20 +99,22 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterScreen("Customer")));
                   },
-                  child: Container(
-                    height: 60,
-                    width: 310,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: color3, width: 2)
-                    ),
-                    child: Center(
-                      child: Text("Sign Up",
-                        style: GoogleFonts.prompt(
-                          textStyle: TextStyle(
-                              color: color3,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
+                  child: FadeInRight(
+                    child: Container(
+                      height: 60,
+                      width: 310,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: color3, width: 2)
+                      ),
+                      child: Center(
+                        child: Text("Sign Up",
+                          style: GoogleFonts.prompt(
+                            textStyle: TextStyle(
+                                color: color3,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                            ),
                           ),
                         ),
                       ),
@@ -122,21 +128,23 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
                   onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
                   },
-                  child: Container(
-                    height: 60,
-                    width: 310,
-                    decoration: BoxDecoration(
-                        color: color1,
-                        borderRadius: BorderRadius.circular(15),
-                        //border: Border.all(color: color3, width: 2)
-                    ),
-                    child: Center(
-                      child: Text("Sign In",
-                        style: GoogleFonts.prompt(
-                          textStyle: TextStyle(
-                              color: color4,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
+                  child: FadeInUp(
+                    child: Container(
+                      height: 60,
+                      width: 310,
+                      decoration: BoxDecoration(
+                          color: color1,
+                          borderRadius: BorderRadius.circular(15),
+                          //border: Border.all(color: color3, width: 2)
+                      ),
+                      child: Center(
+                        child: Text("Sign In",
+                          style: GoogleFonts.prompt(
+                            textStyle: TextStyle(
+                                color: color4,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                            ),
                           ),
                         ),
                       ),
@@ -146,20 +154,22 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
               ),
               SizedBox(height: 10,),
               Center(
-                child: TextButton(
-                  child: Text("Login as Guest",
-                    style: GoogleFonts.prompt(
-                      textStyle: TextStyle(
-                      color: color3,
-                      fontSize: 20,
-                          decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.bold
+                child: ZoomIn(
+                  child: TextButton(
+                    child: Text("Login as Guest",
+                      style: GoogleFonts.prompt(
+                        textStyle: TextStyle(
+                        color: color3,
+                        fontSize: 20,
+                            decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),),
+                    onPressed: (){
+                      locator<GetStorage>().remove("token");
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>ClientSeeAllBusinesses()));
+                    },
                   ),
-                ),),
-                  onPressed: (){
-                    locator<GetStorage>().remove("token");
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ClientSeeAllBusinesses()));
-                  },
                 ),
               ),
               // SizedBox(height: 50,),

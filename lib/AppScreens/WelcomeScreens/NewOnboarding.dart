@@ -153,61 +153,69 @@ class _NewOnboardingState extends State<NewOnboarding> with SingleTickerProvider
                       textStyle: TextStyle(
                           color: color4,
                           fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w400
                       ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 100),
-          Center(
-              child: SliderButton(
-                backgroundColor: color3,
-            buttonColor: color1,
-            action: () {
-              ///Do something here
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> NewSplashScreen()));
-            },
-            label: Text(
-              "Slide to Enter",
-              style: TextStyle(
-                  color: color1, fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            icon: FaIcon(FontAwesomeIcons.arrowRight, color: color3,)
-
-
-          )),
-              // Center(
-              //   child: InkWell(
-              //     onTap: (){
-              //       Navigator.push(context, MaterialPageRoute(builder: (context)=> NewSplashScreen()));
-              //     },
-              //     child: Card(
-              //       color: color3,
-              //       elevation: 8,
-              //       child: Container(
-              //         height: 60,
-              //         width: 310,
-              //         decoration: BoxDecoration(
-              //           //color: color1,
-              //           borderRadius: BorderRadius.circular(17),
-              //           //border: Border.all(color: color3, width: 2)
-              //         ),
-              //         child: Center(
-              //           child: Text("Getting Started...",
-              //             style: GoogleFonts.prompt(
-              //               textStyle: TextStyle(
-              //                   color: color4,
-              //                   fontSize: 20,
-              //                   fontWeight: FontWeight.bold
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SizedBox(height: 60),
+          // Center(
+          //     child: SliderButton(
+          //       backgroundColor: color3,
+          //   buttonColor: color1,
+          //   action: () {
+          //     ///Do something here
+          //     Navigator.push(context, MaterialPageRoute(builder: (context)=> NewSplashScreen()));
+          //   },
+          //   label: Text(
+          //     "Slide to Enter",
+          //     style: TextStyle(
+          //         color: color1, fontWeight: FontWeight.bold, fontSize: 18),
+          //   ),
+          //   icon: FaIcon(FontAwesomeIcons.arrowRight, color: color3,)
+          //
+          //
+          // )),
+              SizedBox(height: 30),
+              Center(
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> NewSplashScreen()));
+                  },
+                  child: Card(
+                    color: color3,
+                    elevation: 8,
+                    child: Container(
+                      height: 60,
+                      width: 310,
+                      decoration: BoxDecoration(
+                        //color: color1,
+                        borderRadius: BorderRadius.circular(17),
+                        //border: Border.all(color: color3, width: 2)
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Getting Started",
+                              style: GoogleFonts.prompt(
+                                textStyle: TextStyle(
+                                    color: color4,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 30,),
+                            FaIcon(FontAwesomeIcons.arrowCircleRight, color: color4, size: 30,)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

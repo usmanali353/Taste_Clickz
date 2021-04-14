@@ -65,6 +65,8 @@ dependencies:
   firebase_messaging: ^5.0.2
   overlay_support: ^1.2.0
   slider_button: ^0.6.0
+  flutter_animator: ^3.1.1
+
 
 dev_dependencies:
   flutter_test:
