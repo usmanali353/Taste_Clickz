@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
+import 'package:ars_progress_dialog/ars_progress_dialog.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ import 'package:review_app/AppScreens/Admin/Business/DetailsScreen.dart';
 import 'package:review_app/Interfaces/IBusinessRepository.dart';
 import 'package:review_app/Utils/Locator.dart';
 import 'package:share/share.dart';
-
+import 'package:http/http.dart'as http;
 
 class Utils{
    static String baseUrl(){
@@ -99,6 +100,37 @@ class Utils{
    static Future<File> getImageCamera() async {
      var image = await ImagePicker.pickImage(source: ImageSource.camera);
      return image;
+   }
+   static Future<File> urlToFile(BuildContext context,String imageUrl) async {
+     ArsProgressDialog pd = ArsProgressDialog(
+         context,
+         blur: 2,
+         backgroundColor: Color(0x33000000),
+         animationDuration: Duration(milliseconds: 500));
+     pd.show();
+     try{
+       var rng = new Random();
+
+       Directory tempDir = await getTemporaryDirectory();
+
+       String tempPath = tempDir.path;
+
+       File file = new File('$tempPath'+ (rng.nextInt(10000)).toString() +'.png');
+
+       http.Response response = await http.get(imageUrl);
+       if(response.statusCode==200){
+         pd.dismiss();
+         await file.writeAsBytes(response.bodyBytes);
+       }else{
+         pd.dismiss();
+         Utils.showError(context, response.statusCode.toString());
+       }
+       return file;
+     }catch(e){
+       pd.dismiss();
+       print(e.toString());
+     }
+     return null;
    }
    static void shareImage(BuildContext context,Uint8List pngBytes) async{
      try{
