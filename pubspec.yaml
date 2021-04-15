@@ -66,6 +66,7 @@ dependencies:
   overlay_support: ^1.2.0
   slider_button: ^0.6.0
   flutter_animator: ^3.1.1
+  quick_actions: ^0.4.0+10
 
 
 dev_dependencies:

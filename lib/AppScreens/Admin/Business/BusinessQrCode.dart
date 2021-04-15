@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,12 +10,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:review_app/Models/BusinessViewModel.dart';
+import 'package:review_app/Utils/Utils.dart';
 import 'package:review_app/components/colorConstants.dart';
 
-class BusinessQRCode extends StatelessWidget {
+class BusinessQRCode extends StatefulWidget {
   BusinessViewModel businessViewModel;
-  GlobalKey globalKey = new GlobalKey();
+
   BusinessQRCode(this.businessViewModel);
+
+  @override
+  _BusinessQRCodeState createState() => _BusinessQRCodeState();
+}
+
+class _BusinessQRCodeState extends State<BusinessQRCode> {
+  GlobalKey globalKey = new GlobalKey();
+  File logoimg;
+  @override
+ void initState(){
+    Utils.check_connectivity().then((isConnected){
+      if(isConnected){
+        Utils.urlToFile(context,widget.businessViewModel.image).then((imageFile){
+          setState(() {
+            logoimg=imageFile;
+          });
+        });
+      }else{
+         Utils.showError(context,"Network Not Available");
+      }
+    });
+
+    super.initState();
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +74,7 @@ class BusinessQRCode extends StatelessWidget {
                   ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
                   Uint8List pngBytes = byteData.buffer.asUint8List();
                   final PdfImage img = PdfImage.file(doc.document, bytes: pngBytes);
-                  final PdfImage logo = PdfImage.file(doc.document, bytes: base64Decode(businessViewModel.image));
+                  final PdfImage logo = PdfImage.file(doc.document, bytes: logoimg.readAsBytesSync());
                   doc.addPage(pw.Page(
                       build: (pw.Context context) {
                         return pw.Column(
@@ -59,7 +85,7 @@ class BusinessQRCode extends StatelessWidget {
                               ),
                               pw.Padding(padding: pw.EdgeInsets.only(bottom:20.0)),
                               pw.Center(
-                                  child: pw.Text(businessViewModel.name,style: pw.TextStyle(fontSize: 30,fontWeight: pw.FontWeight.bold))
+                                  child: pw.Text(widget.businessViewModel.name,style: pw.TextStyle(fontSize: 30,fontWeight: pw.FontWeight.bold))
                               ),
                               pw.Padding(padding: pw.EdgeInsets.only(bottom:20.0)),
                               pw.Center(
@@ -87,7 +113,7 @@ class BusinessQRCode extends StatelessWidget {
             child: RepaintBoundary(
               key: globalKey,
               child: QrImage(
-                data: businessViewModel.id.toString(),
+                data: widget.businessViewModel.id.toString(),
                 version: QrVersions.auto,
                 size: 200.0,
               ),

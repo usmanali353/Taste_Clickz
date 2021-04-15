@@ -51,6 +51,20 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
         ),
         centerTitle: true,
         backgroundColor: color3,
+        actions: [
+          IconButton(
+            icon: Icon(FontAwesomeIcons.comment),
+            onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>OfflineFeedbacks()));
+            },
+          ),
+          IconButton(
+            icon: Icon(FontAwesomeIcons.qrcode),
+            onPressed: (){
+               Utils.scan(context);
+            },
+          ),
+        ],
       ),
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
