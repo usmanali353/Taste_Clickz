@@ -105,233 +105,240 @@ class BusinessProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 210,top: 3),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width/2,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: color1,
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FaIcon(FontAwesomeIcons.mobileAlt, color: color3, ),
-                          SizedBox(width: 5,),
-                          Text("Contact# ",
-                            style: GoogleFonts.prompt(
-                              textStyle: TextStyle(
+              Container(
+                color: color4,
+                width: MediaQuery.of(context).size.width,
+                height: 400,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 210,top: 3),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: color1,
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FaIcon(FontAwesomeIcons.mobileAlt, color: color3, ),
+                              SizedBox(width: 5,),
+                              Text("Contact# ",
+                                style: GoogleFonts.prompt(
+                                  textStyle: TextStyle(
                                       color: color4,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130, top: 3),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: color3,
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child:
-                                Text(business.phone!=null?business.phone:'',
-                                  style: GoogleFonts.prompt(
-                                    textStyle: TextStyle(
-                                        color: color4,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold
-                                    ),
                                   ),
                                 ),
                               ),
-                            ),],
-                        )
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 210,top: 3),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width/2,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: color1,
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FaIcon(FontAwesomeIcons.mapMarkedAlt, color: color3, ),
-                          SizedBox(width: 5,),
-                          Text("Address ",
-                            style: GoogleFonts.prompt(
-                              textStyle: TextStyle(
-                                  color: color4,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold
-                              ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130, top: 3),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: color3,
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child: Container(
-                                  width: 220,
-                                  child: Text(business.address!=null?business.address:'',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.prompt(
-                                      textStyle: TextStyle(
-                                          color: color4,
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130, top: 3),
+                        child: Container(
+                            width: MediaQuery.of(context).size.width/1.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: color3,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child:
+                                    Text(business.phone!=null?business.phone:'',
+                                      style: GoogleFonts.prompt(
+                                        textStyle: TextStyle(
+                                            color: color4,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),],
-                        )
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 210,top: 3),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width/2,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: color1,
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FaIcon(FontAwesomeIcons.clock, color: color3, ),
-                          SizedBox(width: 5,),
-                          Text("Timings ",
-                            style: GoogleFonts.prompt(
-                              textStyle: TextStyle(
-                                  color: color4,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 130, top: 3),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width/1.2,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: color3,
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
+                                ),],
+                            )
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child: Container(
-                                    width: 220,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text("Open: ",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color1,
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold
-                                                ),
-                                              ),
-                                            ),
-                                            Text(business.openingTime!=null?business.openingTime.toString().substring(0,5):'',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color4,
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text("Close: ",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color1,
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold
-                                                ),
-                                              ),
-                                            ),
-                                            Text(business.closingTime!=null?business.closingTime.toString().substring(0,5):'',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
-                                                    color: color4,
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 210,top: 3),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: color1,
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FaIcon(FontAwesomeIcons.mapMarkedAlt, color: color3, ),
+                              SizedBox(width: 5,),
+                              Text("Address ",
+                                style: GoogleFonts.prompt(
+                                  textStyle: TextStyle(
+                                      color: color4,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold
+                                  ),
                                 ),
                               ),
-                            ),],
-                        )
-                    ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130, top: 3),
+                        child: Container(
+                            width: MediaQuery.of(context).size.width/1.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: color3,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Container(
+                                      width: 200,
+                                      child: Text(business.address!=null?business.address:'',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                              color: color4,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),],
+                            )
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 210,top: 3),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width/2,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: color1,
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30))
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FaIcon(FontAwesomeIcons.clock, color: color3, ),
+                              SizedBox(width: 5,),
+                              Text("Timings ",
+                                style: GoogleFonts.prompt(
+                                  textStyle: TextStyle(
+                                      color: color4,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 130, top: 3),
+                        child: Container(
+                            width: MediaQuery.of(context).size.width/1.15,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: color3,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))
+                            ),
+                            child: Row(
+                              //mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Container(
+                                        width: 200,
+                                        child: Row(
+                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text("Open: ",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: GoogleFonts.prompt(
+                                                    textStyle: TextStyle(
+                                                        color: color1,
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.bold
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(business.openingTime!=null?business.openingTime.toString().substring(0,5):'',
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: GoogleFonts.prompt(
+                                                    textStyle: TextStyle(
+                                                        color: color4,
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.w400
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(width: 15,),
+                                            Row(
+                                              children: [
+                                                Text("Close: ",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: GoogleFonts.prompt(
+                                                    textStyle: TextStyle(
+                                                        color: color1,
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.bold
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(business.closingTime!=null?business.closingTime.toString().substring(0,5):'',
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: GoogleFonts.prompt(
+                                                    textStyle: TextStyle(
+                                                        color: color4,
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.w400
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        )
+                                    ),
+                                  ),
+                                ),],
+                            )
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
               SizedBox(height: 50,)
             ],

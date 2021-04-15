@@ -64,55 +64,14 @@ class ProfileScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 30,),
+                            SizedBox(height: 25,),
                             Row(
                               children: [
-                                // Container(
-                                //   width: 155.0,
-                                //   height: 155.0,
-                                //   decoration: BoxDecoration(
-                                //       shape: BoxShape.circle,
-                                //       color: color3
-                                //   ),
-                                //   child: Stack(
-                                //     children: [
-                                //       Positioned(
-                                //         top: 15,
-                                //         child: Container(
-                                //           width: 130.0,
-                                //           height: 130.0,
-                                //           decoration: BoxDecoration(
-                                //             shape: BoxShape.circle,
-                                //             color: Colors.amberAccent.shade100,
-                                //
-                                //           ),
-                                //           child:  CircleAvatar(
-                                //             radius: 75,
-                                //             backgroundColor: color2,
-                                //             child: CircleAvatar(
-                                //               backgroundImage: AssetImage('assets/image.jpg'),
-                                //               //backgroundImage: NetworkImage(userDetail!=null?userDetail['image']:'http://www.4motiondarlington.org/wp-content/uploads/2013/06/No-image-found.jpg'),
-                                //               radius: 70,
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-
-                                SizedBox(width:25,),
-
                                 Container(
-                                  width: 350,
+                                  width: 330,
                                   height: 100,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    //color: color3,
-                                    // border: Border.all(
-                                    //   color: color3,
-                                    //   width: 2
-                                    // )
                                   ),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                                         style: GoogleFonts.prompt(
                                           textStyle: TextStyle(
                                               color: color3,
-                                              fontSize: 30,
+                                              fontSize: 25,
                                               fontWeight: FontWeight.bold
                                           ),
                                         ),

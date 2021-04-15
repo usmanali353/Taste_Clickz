@@ -85,7 +85,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 240,
+                      height: 270,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -95,7 +95,7 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                           Center(child: FaIcon(FontAwesomeIcons.comments, color: color3, size: 140,)),
                           Container(
                             width: MediaQuery.of(context).size.width,
-                            height: 240,
+                            height: 270,
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.9),
                               borderRadius: BorderRadius.circular(10),
@@ -318,42 +318,39 @@ class _IndividualFeedbacksState extends State<IndividualFeedbacks> {
                                         ),
                                       ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 2, right: 25),
-                                      child: Row(
-                                        children: [
-                                          Card(
-                                            elevation:4,
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Card(
+                                      elevation:4,
+                                      color: color3,
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: color3,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Center(child: FaIcon(FontAwesomeIcons.globeAmericas, color: color4,)),
+                                      ),
+                                    ),
+                                    Text("Country: ",
+                                      style: GoogleFonts.prompt(
+                                        textStyle: TextStyle(
                                             color: color3,
-                                            child: Container(
-                                              width: 30,
-                                              height: 30,
-                                              decoration: BoxDecoration(
-                                                color: color3,
-                                                borderRadius: BorderRadius.circular(8),
-                                              ),
-                                              child: Center(child: FaIcon(FontAwesomeIcons.globeAmericas, color: color4,)),
-                                            ),
-                                          ),
-                                          Text("Country: ",
-                                            style: GoogleFonts.prompt(
-                                              textStyle: TextStyle(
-                                                  color: color3,
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.bold
-                                              ),
-                                            ),
-                                          ),
-                                          Text(_feedbackcontroller.feedbacks[index].country!=null?_feedbackcontroller.feedbacks[index].country:"-",
-                                            style: GoogleFonts.prompt(
-                                              textStyle: TextStyle(
-                                                color: color1,
-                                                fontSize: 17,
-                                                //fontWeight: FontWeight.bold
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                    ),
+                                    Text(_feedbackcontroller.feedbacks[index].country!=null?_feedbackcontroller.feedbacks[index].country:"-",
+                                      style: GoogleFonts.prompt(
+                                        textStyle: TextStyle(
+                                          color: color1,
+                                          fontSize: 17,
+                                          //fontWeight: FontWeight.bold
+                                        ),
                                       ),
                                     ),
                                   ],

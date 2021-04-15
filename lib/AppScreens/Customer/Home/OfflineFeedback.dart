@@ -39,6 +39,20 @@ class _IndividualFeedbacksState extends State<OfflineFeedbacks> {
     // final _feedbackcontroller=Get.put(FeedbackController());
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(FontAwesomeIcons.comment),
+            onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>OfflineFeedbacks()));
+            },
+          ),
+          IconButton(
+            icon: Icon(FontAwesomeIcons.qrcode),
+            onPressed: (){
+              Utils.scan(context);
+            },
+          ),
+        ],
         title: Text("Previous Feedback",
           style: GoogleFonts.prompt(
             textStyle: TextStyle(

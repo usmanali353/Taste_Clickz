@@ -64,7 +64,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
           });
         },
         child: Container(
-            color: color4,
+            color: Colors.white,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child:Obx((){
@@ -103,7 +103,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                                         ),
                                       ),
                                       //color: color3,
-                                      //borderRadius: BorderRadius.circular(10)
+                                      borderRadius: BorderRadius.circular(4)
                                     ),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,7 +262,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                                           children: [
                                             FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
                                             SizedBox(width: 3,),
-                                            Text("Opening: ",
+                                            Text("Open: ",
                                               style: GoogleFonts.prompt(
                                                 textStyle: TextStyle(
                                                     color: color3,
@@ -290,7 +290,7 @@ class _ClientSeeAllBusinessesState extends State<ClientSeeAllBusinesses> {
                                           children: [
                                             FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
                                             SizedBox(width: 3,),
-                                            Text("Closing: ",
+                                            Text("Close: ",
                                               style: GoogleFonts.prompt(
                                                 textStyle: TextStyle(
                                                     color: color3,

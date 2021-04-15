@@ -90,44 +90,77 @@ class _BusinessListState extends ResumableState<BusinessList> {
               ListView.builder(itemCount:businessController.businesses!=null?businessController.businesses.length:0,itemBuilder: (context, index){
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      //color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Card(
-                            elevation: 5,
+                  child: Card(
+                    elevation: 6,
+                    color: Colors.white,
+                    child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 270,
+                        decoration: BoxDecoration(
                             color: Colors.white,
-                            child: Container(
+                            borderRadius: BorderRadius.circular(5)
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
                               width: MediaQuery.of(context).size.width,
-                              height: 220,
+                              height: 120,
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
+                                color: color3,
+                                borderRadius: BorderRadius.circular(6),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:''
+                                  ),
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.black87,
+                                              borderRadius: BorderRadius.circular(30)
+                                          ),
+                                          width: 165,
+                                          height: 30,
+                                          child:   RatingBar.builder(
+                                            initialRating: double.parse(businessController.businesses[index].overallRating.toStringAsFixed(1)),
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                            itemBuilder: (context, _) => Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 10,
+                                            ),
+                                            // onRatingUpdate: (rating) {
+                                            //   print(rating);
+                                            // },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  // Positioned(
+                                  //   bottom: 0,
+                                  //   right: 0,
+                                  //   child:
+                                  // )
+                                ],
                               ),
                             ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 12,
-                          right: 0,
-                          child: Card(
-                            elevation: 0,
-                            color: Colors.white,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              width: 245,
-                              height: 218,
-                              child:Column(
-                                //mainAxisAlignment: MainAxisAlignment.center,
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     height: 20,
@@ -137,164 +170,13 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                       style: GoogleFonts.prompt(
                                         textStyle: TextStyle(
                                             color: color3,
-                                            fontSize: 18,
+                                            fontSize: 17,
                                             fontWeight: FontWeight.bold
                                         ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 7,),
                                   Container(
-                                    height: 20,
-                                    width: 220,
-                                    child:
-                                    Text(businessController.businesses!=null&&businessController.businesses[index].address!=null?businessController.businesses[index].address:'-',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.prompt(
-                                        textStyle: TextStyle(
-                                            color: color1,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 3,),
-                                  RatingBar.builder(
-                                    initialRating: double.parse(businessController.businesses[index].overallRating.toStringAsFixed(1)),
-                                    minRating: 1,
-                                    direction: Axis.horizontal,
-                                    allowHalfRating: true,
-                                    itemCount: 5,
-                                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                    itemBuilder: (context, _) => Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 10,
-                                    ),
-                                    // onRatingUpdate: (rating) {
-                                    //   print(rating);
-                                    // },
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Row(
-                                      children: [
-                                        FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
-                                        SizedBox(width: 5,),
-                                        Text("Open: ",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.prompt(
-                                            textStyle: TextStyle(
-                                                color: color3,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold
-                                            ),
-                                          ),
-                                        ),
-                                        Text(businessController.businesses!=null?businessController.businesses[index].openingTime:'-',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.prompt(
-                                            textStyle: TextStyle(
-                                                color: color1,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w500
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Row(
-                                      children: [
-                                        FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
-                                        SizedBox(width: 5,),
-                                        Text("Close: ",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.prompt(
-                                            textStyle: TextStyle(
-                                                color: color3,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold
-                                            ),
-                                          ),
-                                        ),
-                                        Text(businessController.businesses!=null?businessController.businesses[index].closingTime:'-',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.prompt(
-                                            textStyle: TextStyle(
-                                                color: color1,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w500
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      IconButton(
-                                        icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
-                                        onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
-                                        },
-                                      ),
-                                      IconButton(
-                                        icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
-                                        onPressed: (){
-                                          push(context,MaterialPageRoute(builder:(context)=>BusinessQRCode(businessController.businesses[index])));                                              },
-                                      ),
-                                      IconButton(
-                                        icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
-                                        onPressed: (){
-                                          push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
-                                      ),
-                                      IconButton(
-                                        icon:  FaIcon(FontAwesomeIcons.comments, color: color3,  size: 30,),
-                                        onPressed: (){
-                                          push(context,MaterialPageRoute(builder:(context)=>IndividualFeedbacks(businessId:businessController.businesses[index].id,isAdmin: true,)));                                              },
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 2,
-                          child: Container(
-                            width: 140,
-                            height: 240,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:''
-                                  ),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 3,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 3), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  top: 10,
-                                  left:8,
-                                  child: Container(
                                     decoration: BoxDecoration(
                                         color: Colors.black87,
                                         borderRadius: BorderRadius.circular(30)
@@ -325,16 +207,576 @@ class _BusinessListState extends ResumableState<BusinessList> {
                                       ),
                                     ),
                                   ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Text(businessController.businesses!=null&&businessController.businesses[index].address!=null?businessController.businesses[index].address:'-',
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.prompt(
+                                  textStyle: TextStyle(
+                                      color: color1,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+                                      SizedBox(width: 5,),
+                                      Text("Open: ",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                              color: color3,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ),
+                                      Text(businessController.businesses!=null?businessController.businesses[index].openingTime:'-',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                              color: color1,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+                                      SizedBox(width: 5,),
+                                      Text("Close: ",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                              color: color3,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ),
+                                      Text(businessController.businesses!=null?businessController.businesses[index].closingTime:'-',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.prompt(
+                                          textStyle: TextStyle(
+                                              color: color1,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                  icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
+                                  onPressed: (){
+                                    Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
+                                  },
+                                ),
+                                IconButton(
+                                  icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
+                                  onPressed: (){
+                                    push(context,MaterialPageRoute(builder:(context)=>BusinessQRCode(businessController.businesses[index])));                                              },
+                                ),
+                                IconButton(
+                                  icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
+                                  onPressed: (){
+                                    push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
+                                ),
+                                IconButton(
+                                  icon:  FaIcon(FontAwesomeIcons.comments, color: color3,  size: 30,),
+                                  onPressed: (){
+                                    push(context,MaterialPageRoute(builder:(context)=>IndividualFeedbacks(businessId:businessController.businesses[index].id,isAdmin: true,)));                                              },
                                 ),
                               ],
                             ),
-                          ),
-                        ),
-                      ],
+                          ],
+                        )
                     ),
                   ),
                 );
               });
+              // ListView.builder(itemCount:businessController.businesses!=null?businessController.businesses.length:0,itemBuilder: (context, index){
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Card(
+              //       elevation: 6,
+              //       color: Colors.white,
+              //       child: Container(
+              //         width: MediaQuery.of(context).size.width,
+              //         height: 200,
+              //         decoration: BoxDecoration(
+              //             color: Colors.white,
+              //             borderRadius: BorderRadius.circular(5)
+              //         ),
+              //         child: Row(
+              //           children: [
+              //             Container(
+              //               width: 120,
+              //               height: 200,
+              //               decoration: BoxDecoration(
+              //                 color: color3,
+              //                 borderRadius: BorderRadius.circular(6),
+              //                 image: DecorationImage(
+              //                                       fit: BoxFit.cover,
+              //                                       image: NetworkImage(
+              //                                           businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:''
+              //                                       ),
+              //                                   ),
+              //               ),
+              //               child: Stack(
+              //                 children: [
+              //                   Positioned(
+              //                     top: 10,
+              //                     left:10,
+              //                     child: Container(
+              //                       decoration: BoxDecoration(
+              //                           color: Colors.black87,
+              //                           borderRadius: BorderRadius.circular(30)
+              //                       ),
+              //                       width: 65,
+              //                       height: 30,
+              //                       child: Padding(
+              //                         padding: const EdgeInsets.all(4.0),
+              //                         child: Row(
+              //                           children: [
+              //                             FaIcon(
+              //                               FontAwesomeIcons.solidStar,
+              //                               color: Colors.amber,
+              //                               size: 20,
+              //                             ),
+              //                             SizedBox(width: 2,),
+              //                             Text(businessController.businesses[index].overallRating.toStringAsFixed(1),
+              //                               style: GoogleFonts.prompt(
+              //                                 textStyle: TextStyle(
+              //                                     color: color4,
+              //                                     fontSize: 15,
+              //                                     fontWeight: FontWeight.bold
+              //                                 ),
+              //                               ),
+              //                             ),
+              //                           ],
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //             SizedBox(width: 2),
+              //             Container(
+              //               width: 220,
+              //               height: 200,
+              //               decoration: BoxDecoration(
+              //                   color: Colors.white,
+              //                   borderRadius: BorderRadius.circular(6)
+              //               ),
+              //               child: Column(
+              //                 //mainAxisAlignment: MainAxisAlignment.center,
+              //                 children: [
+              //                   Container(
+              //                     height: 20,
+              //                     width: 220,
+              //                     child: Text(businessController.businesses!=null?businessController.businesses[index].name:'-',
+              //                       overflow: TextOverflow.ellipsis,
+              //                       style: GoogleFonts.prompt(
+              //                         textStyle: TextStyle(
+              //                             color: color3,
+              //                             fontSize: 18,
+              //                             fontWeight: FontWeight.bold
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                   SizedBox(height: 5,),
+              //                   Container(
+              //                     height: 20,
+              //                     width: 220,
+              //                     child:
+              //                     Text(businessController.businesses!=null&&businessController.businesses[index].address!=null?businessController.businesses[index].address:'-',
+              //                       overflow: TextOverflow.ellipsis,
+              //                       style: GoogleFonts.prompt(
+              //                         textStyle: TextStyle(
+              //                             color: color1,
+              //                             fontSize: 16,
+              //                             fontWeight: FontWeight.w500
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                   SizedBox(height: 3,),
+              //               RatingBar.builder(
+              //                                       initialRating: double.parse(businessController.businesses[index].overallRating.toStringAsFixed(1)),
+              //                                       minRating: 1,
+              //                                       direction: Axis.horizontal,
+              //                                       allowHalfRating: true,
+              //                                       itemCount: 5,
+              //                                       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              //                                       itemBuilder: (context, _) => Icon(
+              //                                         Icons.star,
+              //                                         color: Colors.amber,
+              //                                         size: 10,
+              //                                       ),
+              //                                       // onRatingUpdate: (rating) {
+              //                                       //   print(rating);
+              //                                       // },
+              //                                     ),
+              //                   SizedBox(height: 10,),
+              //                   Row(
+              //                     children: [
+              //                       FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+              //                       SizedBox(width: 5,),
+              //                       Text("Open: ",
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color3,
+              //                               fontSize: 16,
+              //                               fontWeight: FontWeight.bold
+              //                           ),
+              //                         ),
+              //                       ),
+              //                       Text(businessController.businesses!=null?businessController.businesses[index].openingTime:'-',
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color1,
+              //                               fontSize: 16,
+              //                               fontWeight: FontWeight.w500
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                   SizedBox(height: 2,),
+              //                   Row(
+              //                     children: [
+              //                       FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+              //                       SizedBox(width: 5,),
+              //                       Text("Close: ",
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color3,
+              //                               fontSize: 16,
+              //                               fontWeight: FontWeight.bold
+              //                           ),
+              //                         ),
+              //                       ),
+              //                       Text(businessController.businesses!=null?businessController.businesses[index].closingTime:'-',
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color1,
+              //                               fontSize: 16,
+              //                               fontWeight: FontWeight.w500
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                   Row(
+              //                     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //                     children: [
+              //                       IconButton(
+              //                                                   icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
+              //                                                   onPressed: (){
+              //                                                     Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
+              //                                                   },
+              //                                                 ),
+              //                                                 IconButton(
+              //                                                   icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
+              //                                                   onPressed: (){
+              //                                                     push(context,MaterialPageRoute(builder:(context)=>BusinessQRCode(businessController.businesses[index])));                                              },
+              //                                                 ),
+              //                                                 IconButton(
+              //                                                   icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
+              //                                                   onPressed: (){
+              //                                                     push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
+              //                                                 ),
+              //                                                 IconButton(
+              //                                                   icon:  FaIcon(FontAwesomeIcons.comments, color: color3,  size: 30,),
+              //                                                   onPressed: (){
+              //                                                     push(context,MaterialPageRoute(builder:(context)=>IndividualFeedbacks(businessId:businessController.businesses[index].id,isAdmin: true,)));                                              },
+              //                                                 ),
+              //                     ],
+              //                   )
+              //                 ],
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   );
+              // });
+              // ListView.builder(itemCount:businessController.businesses!=null?businessController.businesses.length:0,itemBuilder: (context, index){
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Container(
+              //       width: MediaQuery.of(context).size.width,
+              //       height: 250,
+              //       decoration: BoxDecoration(
+              //         //color: Colors.white,
+              //         borderRadius: BorderRadius.circular(10),
+              //       ),
+              //       child: Stack(
+              //         children: [
+              //           Center(
+              //             child: Card(
+              //               elevation: 5,
+              //               color: Colors.white,
+              //               child: Container(
+              //                 width: MediaQuery.of(context).size.width,
+              //                 height: 220,
+              //                 decoration: BoxDecoration(
+              //                   color: Colors.white,
+              //                   borderRadius: BorderRadius.circular(10),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //           Positioned(
+              //             top: 12,
+              //             right: -32,
+              //             child: Card(
+              //               elevation: 0,
+              //               color: Colors.white,
+              //               child: Container(
+              //                 decoration: BoxDecoration(
+              //                   color: Colors.white,
+              //                   borderRadius: BorderRadius.circular(10),
+              //                 ),
+              //                 width: 265,
+              //                 height: 218,
+              //                 child:Column(
+              //                   //mainAxisAlignment: MainAxisAlignment.center,
+              //                   children: [
+              //                     Container(
+              //                       height: 20,
+              //                       width: 220,
+              //                       child: Text(businessController.businesses!=null?businessController.businesses[index].name:'-',
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color3,
+              //                               fontSize: 18,
+              //                               fontWeight: FontWeight.bold
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ),
+              //                     SizedBox(height: 7,),
+              //                     Container(
+              //                       height: 20,
+              //                       width: 220,
+              //                       child:
+              //                       Text(businessController.businesses!=null&&businessController.businesses[index].address!=null?businessController.businesses[index].address:'-',
+              //                         overflow: TextOverflow.ellipsis,
+              //                         style: GoogleFonts.prompt(
+              //                           textStyle: TextStyle(
+              //                               color: color1,
+              //                               fontSize: 16,
+              //                               fontWeight: FontWeight.w500
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ),
+              //                     SizedBox(height: 3,),
+              //                     RatingBar.builder(
+              //                       initialRating: double.parse(businessController.businesses[index].overallRating.toStringAsFixed(1)),
+              //                       minRating: 1,
+              //                       direction: Axis.horizontal,
+              //                       allowHalfRating: true,
+              //                       itemCount: 5,
+              //                       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              //                       itemBuilder: (context, _) => Icon(
+              //                         Icons.star,
+              //                         color: Colors.amber,
+              //                         size: 10,
+              //                       ),
+              //                       // onRatingUpdate: (rating) {
+              //                       //   print(rating);
+              //                       // },
+              //                     ),
+              //                     SizedBox(height: 10,),
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(4.0),
+              //                       child: Row(
+              //                         children: [
+              //                           FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+              //                           SizedBox(width: 5,),
+              //                           Text("Open: ",
+              //                             overflow: TextOverflow.ellipsis,
+              //                             style: GoogleFonts.prompt(
+              //                               textStyle: TextStyle(
+              //                                   color: color3,
+              //                                   fontSize: 15,
+              //                                   fontWeight: FontWeight.bold
+              //                               ),
+              //                             ),
+              //                           ),
+              //                           Text(businessController.businesses!=null?businessController.businesses[index].openingTime:'-',
+              //                             overflow: TextOverflow.ellipsis,
+              //                             style: GoogleFonts.prompt(
+              //                               textStyle: TextStyle(
+              //                                   color: color1,
+              //                                   fontSize: 15,
+              //                                   fontWeight: FontWeight.w500
+              //                               ),
+              //                             ),
+              //                           ),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(4.0),
+              //                       child: Row(
+              //                         children: [
+              //                           FaIcon(FontAwesomeIcons.clock, color: color1, size: 20,),
+              //                           SizedBox(width: 5,),
+              //                           Text("Close: ",
+              //                             overflow: TextOverflow.ellipsis,
+              //                             style: GoogleFonts.prompt(
+              //                               textStyle: TextStyle(
+              //                                   color: color3,
+              //                                   fontSize: 15,
+              //                                   fontWeight: FontWeight.bold
+              //                               ),
+              //                             ),
+              //                           ),
+              //                           Text(businessController.businesses!=null?businessController.businesses[index].closingTime:'-',
+              //                             overflow: TextOverflow.ellipsis,
+              //                             style: GoogleFonts.prompt(
+              //                               textStyle: TextStyle(
+              //                                   color: color1,
+              //                                   fontSize: 15,
+              //                                   fontWeight: FontWeight.w500
+              //                               ),
+              //                             ),
+              //                           ),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                     Row(
+              //                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //                       children: [
+              //                         IconButton(
+              //                           icon:  FaIcon(FontAwesomeIcons.chartPie, color: color3, size: 30,),
+              //                           onPressed: (){
+              //                             Navigator.push(context,MaterialPageRoute(builder:(context)=>BusinessReport(businessController.businesses[index].id)));
+              //                           },
+              //                         ),
+              //                         IconButton(
+              //                           icon:  FaIcon(FontAwesomeIcons.qrcode, color: color3, size: 30,),
+              //                           onPressed: (){
+              //                             push(context,MaterialPageRoute(builder:(context)=>BusinessQRCode(businessController.businesses[index])));                                              },
+              //                         ),
+              //                         IconButton(
+              //                           icon:  FaIcon(FontAwesomeIcons.list, color: color3,  size: 30,),
+              //                           onPressed: (){
+              //                             push(context,MaterialPageRoute(builder:(context)=>BusinessCategoryList(businessController.businesses[index].id)));                                              },
+              //                         ),
+              //                         IconButton(
+              //                           icon:  FaIcon(FontAwesomeIcons.comments, color: color3,  size: 30,),
+              //                           onPressed: (){
+              //                             push(context,MaterialPageRoute(builder:(context)=>IndividualFeedbacks(businessId:businessController.businesses[index].id,isAdmin: true,)));                                              },
+              //                         ),
+              //                       ],
+              //                     )
+              //                   ],
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //           Positioned(
+              //             top: 2,
+              //             child: Container(
+              //               width: 140,
+              //               height: 240,
+              //               decoration: BoxDecoration(
+              //                 color: Colors.white,
+              //                 borderRadius: BorderRadius.circular(30),
+              //                 image: DecorationImage(
+              //                     fit: BoxFit.cover,
+              //                     image: NetworkImage(
+              //                         businessController.businesses!=null&&businessController.businesses[index].image!=null?businessController.businesses[index].image:''
+              //                     ),
+              //                 ),
+              //                 boxShadow: [
+              //                   BoxShadow(
+              //                     color: Colors.grey.withOpacity(0.5),
+              //                     spreadRadius: 3,
+              //                     blurRadius: 5,
+              //                     offset: Offset(0, 3), // changes position of shadow
+              //                   ),
+              //                 ],
+              //               ),
+              //               child: Stack(
+              //                 children: [
+              //                   Positioned(
+              //                     top: 10,
+              //                     left:8,
+              //                     child: Container(
+              //                       decoration: BoxDecoration(
+              //                           color: Colors.black87,
+              //                           borderRadius: BorderRadius.circular(30)
+              //                       ),
+              //                       width: 65,
+              //                       height: 30,
+              //
+              //                       child: Padding(
+              //                         padding: const EdgeInsets.all(4.0),
+              //                         child: Row(
+              //                           children: [
+              //                             FaIcon(
+              //                               FontAwesomeIcons.solidStar,
+              //                               color: Colors.amber,
+              //                               size: 20,
+              //                             ),
+              //                             SizedBox(width: 2,),
+              //                             Text(businessController.businesses[index].overallRating.toStringAsFixed(1),
+              //                               style: GoogleFonts.prompt(
+              //                                 textStyle: TextStyle(
+              //                                     color: color4,
+              //                                     fontSize: 15,
+              //                                     fontWeight: FontWeight.bold
+              //                                 ),
+              //                               ),
+              //                             ),
+              //                           ],
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   );
+              // });
           })
         ),
       ),
