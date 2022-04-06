@@ -19,7 +19,7 @@ class Utils{
    static String baseUrl(){
     // return "https://foodbooks.conveyor.cloud/api/";
      //return "http://192.168.1.14:45459/api/";
-     return "http://iibtechnology-001-site1.dtempurl.com/api/";
+     return "http://173.212.235.106:3400/api/";
    }
    static bool validateStructure(String value){
      RegExp regExp = new RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,}$');

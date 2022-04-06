@@ -47,8 +47,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+<!--        <meta-data android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="AIzaSyByqEmK63eyWz6Yu6j0y3yEaPB1NSU-uvM"/>-->
+<!--        &lt;!&ndash; Don't delete the meta-data below.-->
+<!--             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java &ndash;&gt;-->
+<!--        <meta-data-->
+<!--            android:name="flutterEmbedding"-->
+<!--            android:value="2" />-->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyByqEmK63eyWz6Yu6j0y3yEaPB1NSU-uvM"/>
+            android:value="AIzaSyBa4aE9c4UasqyApYdWYGfaNmdsQLuFg6w"/>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

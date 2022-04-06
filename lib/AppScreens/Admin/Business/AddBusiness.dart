@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -31,11 +30,10 @@ class _AddBusinessState extends State<AddBusiness> {
   File _image;
   DateTime start_time ;
   DateTime end_time ;
+  TextEditingController time=TextEditingController();
   var _formKey = new GlobalKey<FormState>();
-  var _autoValidate = false;
   final businessController=Get.put(BusinessController());
   final accountController = Get.find<AccountController>();
-
   @override
     Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +62,6 @@ class _AddBusinessState extends State<AddBusiness> {
             children: [
               Form(
                 key: _formKey,
-                autovalidate: _autoValidate,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -262,19 +259,29 @@ class _AddBusinessState extends State<AddBusiness> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DateTimeField(
-                              style: Theme.of(context).textTheme.body1,
+                            child: TextFormField(
+                              controller: businessController.startTime,
+                              style: Theme.of(context).textTheme.bodyText1,
                               //inputType: InputType.time,
                               //alwaysUse24HourFormat: true,
-                              format: DateFormat("HH:mm:ss"),
-                              onShowPicker: (context, currentValue) async {
+                              //format: DateFormat("HH:mm:ss"),
+                              onTap: ()async{
+                                FocusScope.of(context).requestFocus(new FocusNode());
                                 final time = await showTimePicker(
                                   context: context,
-                                  initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+                                  initialTime: TimeOfDay.fromDateTime(DateTime.now()),
                                 );
-
-                                return DateTimeField.convert(time);
+                                businessController.openingTime.value=DateFormat("hh:mm").parse(time.hour.toString()+":"+time.minute.toString());
+                                businessController.startTime.text=time.hour.toString()+":"+time.minute.toString();
                               },
+                              // onShowPicker: (context, currentValue) async {
+                              //   final time = await showTimePicker(
+                              //     context: context,
+                              //     initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+                              //   );
+                              //
+                              //   return DateTimeField.convert(time);
+                              // },
                               decoration: InputDecoration(labelText: "Select start time",
                                 labelStyle: GoogleFonts.prompt(
                                 textStyle: TextStyle(
@@ -288,8 +295,8 @@ class _AddBusinessState extends State<AddBusiness> {
                                     borderSide: BorderSide(color: color1, width: 2.0)
                                 ),),
                               onChanged: (value){
-                                setState(() {businessController.openingTime.value=value;
-                                  this.start_time=value;
+                                setState(() {businessController.openingTime.value=DateFormat("hh:mm").parse(value);
+                                  this.start_time=DateFormat("hh:mm:ss").parse(value);
                                 });
                               },
                             ),
@@ -310,18 +317,25 @@ class _AddBusinessState extends State<AddBusiness> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DateTimeField(
-                              style: Theme.of(context).textTheme.body1,
+                            child: TextFormField(
+                              controller: businessController.endTime,
+                              style: Theme.of(context).textTheme.bodyText1,
                               // alwaysUse24HourFormat: true,
-                              format: DateFormat("HH:mm:ss"),
-                              onShowPicker: (context, currentValue) async {
+                             // format: DateFormat("HH:mm:ss"),
+                              onTap: ()async{
+                                FocusScope.of(context).requestFocus(new FocusNode());
                                 final time = await showTimePicker(
                                   context: context,
-                                  initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+                                  initialTime: TimeOfDay.fromDateTime(DateTime.now()),
                                 );
-
-                                return DateTimeField.convert(time);
+                                businessController.closingTime.value=DateFormat("hh:mm").parse(time.hour.toString()+":"+time.minute.toString());
+                                businessController.endTime.text=time.hour.toString()+":"+time.minute.toString();
                               },
+                              // onShowPicker: (context, currentValue) async {
+                              //
+                              //
+                              //   return DateTimeField.convert(time);
+                              // },
                               decoration: InputDecoration(labelText: "Select end time",
                                 labelStyle: GoogleFonts.prompt(
                                   textStyle: TextStyle(
@@ -336,8 +350,8 @@ class _AddBusinessState extends State<AddBusiness> {
                                 ),),
                               onChanged: (value){
                                 setState(() {
-                                  this.end_time=value;
-                                  businessController.closingTime.value=value;
+                                  this.end_time=DateFormat("HH:mm").parse(value);
+                                  businessController.closingTime.value=DateFormat("HH:mm").parse(value);
                                 });
                               },
                             ),

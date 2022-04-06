@@ -21,8 +21,16 @@ class BusinessController extends GetxController{
   var image="".obs;
   final accountController=Get.put(AccountController());
   TextEditingController nameTextEditingController,phoneTextEditingController,emailTextEditingController,descriptionTextEditingController,addressTextEditingController;
+  TextEditingController endTime,startTime;
+
   @override
   void onInit() {
+    if(endTime==null){
+      endTime=TextEditingController();
+    }
+     if(startTime==null){
+       startTime=TextEditingController();
+     }
       if (nameTextEditingController == null) {
         nameTextEditingController = TextEditingController();
       }
